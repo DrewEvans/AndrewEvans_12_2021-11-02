@@ -11,6 +11,10 @@ justify-content: space-evenly;
 align-items: center;
 `;
 
+/*
+* If icon prop name matches one of the four labeled use the theme 
+* css color objects located on ../index.js for the designs 
+*/
 const IconWrapper = styled.div`
 background-color: ${(props)=>{
     if(props.children.props.icon.iconName === "fire"){
@@ -75,14 +79,12 @@ export const DailyActivityIcon = ({icon, metricAbv, type, amount}) =>{
         </IconWrapper>
         <AmountWrapper>
             <TextAmount>
-                {amount}
-                {metricAbv}
+                {amount}{metricAbv}
             </TextAmount>
             <TextWrapper>
                 {type}
             </TextWrapper>
         </AmountWrapper>
-        
     </Wrapper>
     </>
 }
