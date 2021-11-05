@@ -7,7 +7,7 @@ border-radius: 5px;
 width: 250px;
 height: 130px;
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
 align-items: center;
 `;
 
@@ -48,17 +48,41 @@ align-items: center;
 border-radius: 6px;
 `;
 
+const AmountWrapper = styled.div`
+font-weight: bold;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+`;
+
+const TextAmount = styled.p`
+color: #f2f2f2f;
+margin: .25em;
+`;
+
+const TextWrapper = styled.p`
+color: #74798C;
+font-size: .75em;
+margin: .25em;
+`;
 
 export const DailyActivityIcon = ({icon, metricAbv, type, amount}) =>{
-    
     return <>
     <Wrapper>
         <IconWrapper>
-    {icon}
-    </IconWrapper>
-    {amount}
-    {metricAbv}
-    {type}
+         {icon}
+        </IconWrapper>
+        <AmountWrapper>
+            <TextAmount>
+                {amount}
+                {metricAbv}
+            </TextAmount>
+            <TextWrapper>
+                {type}
+            </TextWrapper>
+        </AmountWrapper>
+        
     </Wrapper>
     </>
 }
