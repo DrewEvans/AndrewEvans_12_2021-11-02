@@ -4,7 +4,8 @@ const Wrapper = styled.div`
 background-color: #FBFBFB;
 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
 border-radius: 5px;
-width: 250px;
+margin: 1.5em 0;
+width: 90%;
 height: 130px;
 display: flex;
 justify-content: space-evenly;
