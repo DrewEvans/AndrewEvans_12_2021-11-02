@@ -4,9 +4,9 @@ const Wrapper = styled.div`
 background-color: #FBFBFB;
 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
 border-radius: 5px;
-margin: 1.5em 0;
-width: 90%;
-height: 130px;
+width: 18rem;
+height: 7.5rem;
+margin-top: 2.5em; 
 display: flex;
 justify-content: space-evenly;
 align-items: center;
@@ -45,8 +45,8 @@ color: ${(props)=>{
         return props.theme.pinkIcon
     }
 }};
-height: 60px;
-width: 60px;
+height: 5rem;
+width: 5rem;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -63,12 +63,13 @@ justify-content: center;
 
 const TextAmount = styled.p`
 color: #f2f2f2f;
+font-size: 1.5em;
 margin: .25em;
 `;
 
 const TextWrapper = styled.p`
 color: #74798C;
-font-size: .75em;
+font-size: 1em;
 margin: .25em;
 `;
 

@@ -12,7 +12,7 @@ const dumbellIcon = <FontAwesomeIcon icon={faDumbbell} />;
 
 const NavWrapper = styled.div`
 background-color: black;
-width: 100%;
+width: 90%;
 height: 100%;
 display: flex;
 align-items: center;
@@ -31,7 +31,7 @@ font-size: 1.25em;
 display: flex;
 justify-content: center;
 align-items: center;
-margin: .75em 0;
+margin: 1.5em 0;
 height: 64px;
 width: 64px;
 border-radius: 6px;
@@ -40,8 +40,8 @@ border-radius: 6px;
 
 const Copyright = styled.p`
 color: #FFF;
-font-size: .75em;
-width: 150px;
+font-size: 1em;
+width: 180px;
 transform: rotate(-90deg);
 
 `;

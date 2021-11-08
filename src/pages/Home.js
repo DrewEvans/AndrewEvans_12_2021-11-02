@@ -9,6 +9,7 @@ import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
 import { faAppleAlt } from "@fortawesome/free-solid-svg-icons";
 import { faHamburger } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { BarChart } from "../components/BarChart";
 /**
  * *Images imported from fontawesome for daily Icons
  * *passed as props
@@ -43,11 +44,19 @@ const NavBar = styled.nav`
 
 const Content = styled.div`
   grid-area: content;
+  margin-bottom: 5rem;
 `;
 
 const Section = styled.section`
   grid-area: section;
+  display flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 5rem;
 `;
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [6, 7, 8, 9, 10];
 
 export const Home = () => {
   return (
@@ -63,7 +72,9 @@ export const Home = () => {
           <WelcomeHeader name='John' />
         </Main>
 
-        <Content></Content>
+        <Content>
+          <BarChart weight={array1} calsBurned={array2} />
+        </Content>
 
         <Section>
           <DailyActivityIcon
