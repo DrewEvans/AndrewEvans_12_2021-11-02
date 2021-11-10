@@ -14,7 +14,7 @@ align-items: center;
 
 /*
 * If icon prop name matches one of the four labeled use the theme 
-* css color objects located on ../index.js for the designs 
+* css color objects located on ../index.js for the designs  
 */
 const IconWrapper = styled.div`
 background-color: ${(props)=>{
@@ -73,20 +73,23 @@ font-size: 1em;
 margin: .25em;
 `;
 
-export const DailyActivityIcon = ({icon, metricAbv, type, amount}) =>{
-    return <>
-    <Wrapper>
-        <IconWrapper>
-         {icon}
-        </IconWrapper>
-        <AmountWrapper>
-            <TextAmount>
-                {amount}{metricAbv}
-            </TextAmount>
-            <TextWrapper>
-                {type}
-            </TextWrapper>
-        </AmountWrapper>
-    </Wrapper>
-    </>
-}
+const DailyActivityIcon = ({icon, metricAbv, type, amount}) => {
+    return (
+        <>
+        <Wrapper>
+            <IconWrapper>
+            {icon}
+            </IconWrapper>
+            <AmountWrapper>
+                <TextAmount>
+                    {amount}{metricAbv}
+                </TextAmount>
+                <TextWrapper>
+                    {type}
+                </TextWrapper>
+            </AmountWrapper>
+        </Wrapper>
+        </>
+    );
+};
+export default DailyActivityIcon;
