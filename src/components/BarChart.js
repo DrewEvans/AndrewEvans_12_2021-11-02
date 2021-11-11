@@ -1,4 +1,3 @@
-import { maxIndex } from "d3-array";
 import { useRef } from "react";
 import {
   BarChart,
@@ -20,7 +19,7 @@ const ChartWrapper = styled.div`
   justify-content: center;
   width: 75%;
   margin: 0 auto;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 `;
 
@@ -87,7 +86,7 @@ const ActivityBarChart = () => {
             left: 100,
             bottom: 20,
           }}>
-          <XAxis dataKey='day'>
+          <XAxis dataKey='day' tickLine={false}>
             <Label value='Activité quotidienne' position='top' offset={200} />
           </XAxis>
           <YAxis

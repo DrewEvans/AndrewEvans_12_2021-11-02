@@ -7,13 +7,23 @@ import {
   Line,
   ResponsiveContainer,
 } from "recharts";
+import {
+  GetDayNameByOrder,
+  GetShortDayNameByOrder,
+} from "../helpers/getDayNameByOrder";
+import { formatTimeValue } from "../helpers/formatValues";
 import styled from "styled-components";
 
 const ChartWrapper = styled.div`
   height: 300px;
   width: 300px;
-  background-color: red;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+  background: rgb(247, 59, 59);
+  background: linear-gradient(
+    36deg,
+    rgba(247, 59, 59, 0.9920343137254902) 0%,
+    rgba(230, 0, 0, 1) 100%
+  );
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.45);
   border-radius: 5px;
 `;
 
@@ -28,8 +38,6 @@ const data = [
 ];
 
 const LineChartDuration = () => {
-  console.log(data);
-
   const MaxSessionLength = Math.max(...data.map((x) => x.sessionLength)) + 2;
 
   return (
@@ -40,15 +48,17 @@ const LineChartDuration = () => {
             <XAxis
               dataKey='day'
               tickLine={false}
+              tickFormatter={GetDayNameByOrder}
               stroke='#FFFFFF'
               axisLine={false}
               height={35}
+              padding={{ left: 0, right: 5 }}
             />
             <YAxis
               dataKey='sessionLength'
               display='none'
-              domain={["auto", MaxSessionLength]}
-              width={0}
+              domain={["auto", MaxSessionLength + 25]}
+              width={5}
               tickCount={7}
               tickLine={false}
             />
@@ -56,6 +66,7 @@ const LineChartDuration = () => {
               type='monotone'
               dataKey='sessionLength'
               stroke='#FFFFFF'
+              width={5}
               strokeWidth={2}
               dot={false}
             />
@@ -68,8 +79,10 @@ const LineChartDuration = () => {
                 borderRadius: "6px",
               }}
               itemStyle={{ color: "#000", fontWeight: "bold" }}
+              labelFormatter={GetShortDayNameByOrder}
+              formatter={formatTimeValue}
+              separator=''
             />
-            <Legend />
           </LineChart>
         </ResponsiveContainer>
       </ChartWrapper>

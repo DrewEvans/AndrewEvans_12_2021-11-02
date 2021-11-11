@@ -5,6 +5,7 @@ import {
   DailyActivityIcon,
   ActivityBarChart,
   LineChartDuration,
+  ActivtiyRadarChart,
 } from "../components/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,20 +16,8 @@ import { faHamburger } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 const fireIcon = <FontAwesomeIcon icon={faFire} />;
-/**
- * *SVG-Icons used for DailyActivity Component
- * @type {SVGElement}
- */
 const meatIcon = <FontAwesomeIcon icon={faDrumstickBite} />;
-/**
- * *SVG-Icons used for DailyActivity Component
- * @type {SVGElement}
- */
 const appleIcon = <FontAwesomeIcon icon={faAppleAlt} />;
-/**
- * *SVG-Icons used for DailyActivity Component
- * @type {SVGElement}
- */
 const hamburgerIcon = <FontAwesomeIcon icon={faHamburger} />;
 
 const Container = styled.div`
@@ -88,6 +77,7 @@ export const Home = () => {
         <Content>
           <ActivityBarChart />
           <LineChartDuration />
+          <ActivtiyRadarChart />
         </Content>
 
         <Section>
