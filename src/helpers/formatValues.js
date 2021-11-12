@@ -2,7 +2,7 @@
  * Converts value to string including "min".
  * @function
  * @property {object} toolTipProps -Formatter function of value in tooltip. If you return an array, the first entry will be the formatted "value", and the second entry will be the formatted "name"
- * @param {value}
+ * @param {value} - The value from the xAxis displayed in the legend
  * @return {String} Returns value as string
  */
 
@@ -14,7 +14,7 @@ export const formatTimeValue = (value) => {
  * Converts value to string
  * @function
  * @property {value} tickItem -The formatter function of tick.
- * @param {number}
+ * @param {number} -The value from the xAxis
  * @return {String} Returns value as string
  */
 

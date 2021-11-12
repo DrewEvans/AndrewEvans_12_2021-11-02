@@ -40,7 +40,7 @@ const MulitGridWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
-  width: 1300px;
+  width: 1150px;
 `;
 
 const Aside = styled.aside`
