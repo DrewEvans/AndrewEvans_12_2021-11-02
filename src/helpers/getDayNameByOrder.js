@@ -1,6 +1,6 @@
 /**
  * Converts a day number to a 'd' string.
- *
+ *@function
  * @param {Number} dayIndex
  * @return {String} Returns day as string
  */
@@ -31,7 +31,7 @@ export const GetDayNameByOrder = (tickItem) => {
 
 /**
  * Converts a day number to a 'ddd'string.
- *
+ *@function
  * @param {Number} dayIndex
  * @return {String} Returns day as string
  */

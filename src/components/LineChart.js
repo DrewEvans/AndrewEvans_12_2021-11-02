@@ -27,6 +27,16 @@ const ChartWrapper = styled.div`
   border-radius: 5px;
 `;
 
+const Title = styled.h2`
+  font-size: 1.25em;
+  color: #fff;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  position: absolute;
+  width: 200px;
+  margin-left: 1.5em;
+`;
+
 const data = [
   { day: 1, sessionLength: 30 },
   { day: 2, sessionLength: 40 },
@@ -43,6 +53,7 @@ const LineChartDuration = () => {
   return (
     <>
       <ChartWrapper id='lineChart'>
+        <Title>Durée moyenne des sessions</Title>
         <ResponsiveContainer>
           <LineChart width='300' height='300' data={data}>
             <XAxis
