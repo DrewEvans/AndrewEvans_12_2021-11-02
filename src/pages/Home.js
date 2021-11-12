@@ -6,6 +6,7 @@ import {
   ActivityBarChart,
   LineChartDuration,
   ActivtiyRadarChart,
+  ObjectiveRadialChart,
 } from "../components/index";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,6 +34,13 @@ const Container = styled.div`
 
 const Main = styled.main`
   grid-area: main;
+`;
+
+const MulitGridWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 1300px;
 `;
 
 const Aside = styled.aside`
@@ -76,8 +84,11 @@ export const Home = () => {
 
         <Content>
           <ActivityBarChart />
-          <LineChartDuration />
-          <ActivtiyRadarChart />
+          <MulitGridWrapper>
+            <LineChartDuration />
+            <ActivtiyRadarChart />
+            <ObjectiveRadialChart />
+          </MulitGridWrapper>
         </Content>
 
         <Section>

@@ -7,11 +7,14 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styled from "styled-components";
-import { formatKindValue } from "../helpers/formatValues";
+import { formatKindValue, customizedLabel } from "../helpers/formatValues";
 
 const ChartWrapper = styled.div`
   height: 300px;
   width: 300px;
+  background: #282d30;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.45);
+  border-radius: 5px;
 `;
 
 const data = [
@@ -29,14 +32,18 @@ const ActivtiyRadarChart = () => {
       <ResponsiveContainer width='100%' height='100%'>
         <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
           <PolarGrid />
-          <PolarAngleAxis dataKey='kind' tickFormatter={formatKindValue} />
-          <PolarRadiusAxis />
+          <PolarAngleAxis
+            dataKey='kind'
+            tick={customizedLabel}
+            tickFormatter={formatKindValue}
+          />
+          <PolarRadiusAxis axisLine={false} stroke='#282d30' label={false} />
           <Radar
             name='Radar'
             dataKey='value'
-            stroke='#8884d8'
-            fill='#8884d8'
-            fillOpacity={0.6}
+            stroke='#FF0101'
+            fill='#FF0101'
+            fillOpacity={0.7}
           />
         </RadarChart>
       </ResponsiveContainer>

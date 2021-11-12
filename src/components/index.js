@@ -5,3 +5,4 @@ export { default as VerticalNav } from "./VerticalNav";
 export { default as ActivityBarChart } from "./BarChart";
 export { default as LineChartDuration } from "./LineChart";
 export { default as ActivtiyRadarChart } from "./RadarChart";
+export { default as ObjectiveRadialChart } from "./RadialChart";
