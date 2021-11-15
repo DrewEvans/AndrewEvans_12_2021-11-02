@@ -3,6 +3,7 @@ import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faBiking } from "@fortawesome/free-solid-svg-icons";
 import { faChild } from "@fortawesome/free-solid-svg-icons";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const swimmerIcon = <FontAwesomeIcon icon={faSwimmer} />;
@@ -49,10 +50,18 @@ const VerticalNav = () => {
     <>
       <NavWrapper>
         <IconWrapper>
-          <NavIcon>{strecthingIcon}</NavIcon>
-          <NavIcon>{swimmerIcon}</NavIcon>
-          <NavIcon>{bikingIcon}</NavIcon>
-          <NavIcon>{dumbellIcon}</NavIcon>
+          <Link to='/'>
+            <NavIcon>{strecthingIcon}</NavIcon>
+          </Link>
+          <Link to='/'>
+            <NavIcon>{swimmerIcon}</NavIcon>
+          </Link>
+          <Link to='/'>
+            <NavIcon>{bikingIcon}</NavIcon>
+          </Link>
+          <Link to='/'>
+            <NavIcon>{dumbellIcon}</NavIcon>
+          </Link>
         </IconWrapper>
         <Copyright>Copiryght, SportSee 2020</Copyright>
       </NavWrapper>

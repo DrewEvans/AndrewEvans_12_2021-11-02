@@ -26,6 +26,8 @@ const ActivityBarChart = ({ fetchUrl }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(Math.max(...userActivity.map((x) => x.calories)) + 2);
+
   return (
     <>
       {userActivity && (

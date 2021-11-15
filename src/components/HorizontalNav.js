@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 
@@ -39,10 +39,18 @@ const HorizontalNav = () => {
           <AppLogo src={Logo}></AppLogo>
         </NavLink>
         <NavList className='nav-list'>
-          <NavLinks className='nav-links'>Accueil</NavLinks>
-          <NavLinks className='nav-links'>Profil</NavLinks>
-          <NavLinks className='nav-links'>Réglage</NavLinks>
-          <NavLinks className='nav-links'>Communaté</NavLinks>
+          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+            <NavLinks className='nav-links'>Accueil</NavLinks>
+          </Link>
+          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+            <NavLinks className='nav-links'>Profil</NavLinks>
+          </Link>
+          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+            <NavLinks className='nav-links'>Réglage</NavLinks>
+          </Link>
+          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+            <NavLinks className='nav-links'>Communaté</NavLinks>
+          </Link>
         </NavList>
       </NavWrapper>
     </>
