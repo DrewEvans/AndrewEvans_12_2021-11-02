@@ -1,7 +1,6 @@
 import {
   RadialBarChart,
   RadialBar,
-  Legend,
   PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
@@ -24,34 +23,18 @@ const Title = styled.h2`
   margin-left: 1.5em;
 `;
 
-const data = [
-  {
-    userInfo: { firstName: "Cecilia", lastName: "Ratorez", age: 34 },
-    score: 0.3,
-    keyData: {
-      calorieCount: 2500,
-      proteinCount: 90,
-      carbohydrateCount: 150,
-      lipidCount: 120,
-    },
-  },
-];
-
-const objective = [
-  {
-    name: "percentage",
-    value: 55,
-  },
-];
-let score = [100];
-
-for (const iterator of data) {
-  //   score = iterator.score;
-}
 const circleSize = 300;
+
 const sub = 270;
 
-const ObjectiveRadialChart = () => {
+const ObjectiveRadialChart = ({ score }) => {
+  const data = [
+    {
+      name: "percentage",
+      value: score,
+    },
+  ];
+
   return (
     <ChartWrapper>
       <Title>Score</Title>
@@ -64,7 +47,7 @@ const ObjectiveRadialChart = () => {
           innerRadius={110}
           outerRadius={170}
           barSize={12}
-          data={objective}
+          data={data}
           startAngle={90 - sub}
           endAngle={-270 - sub}>
           <PolarAngleAxis
@@ -86,7 +69,6 @@ const ObjectiveRadialChart = () => {
             y={circleSize / 2}
             style={{ fontSize: 18, stroke: "#20253a" }}
             width='25'
-            scalToFit={true}
             textAnchor='middle'
             dominantBaseline='middle'
             className='progress-label'>

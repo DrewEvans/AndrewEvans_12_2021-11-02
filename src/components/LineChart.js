@@ -3,7 +3,6 @@ import {
   YAxis,
   XAxis,
   Tooltip,
-  Legend,
   Line,
   ResponsiveContainer,
 } from "recharts";
@@ -12,6 +11,8 @@ import {
   GetShortDayNameByOrder,
 } from "../helpers/getDayNameByOrder";
 import { formatTimeValue } from "../helpers/formatValues";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 
 const ChartWrapper = styled.div`
@@ -37,66 +38,73 @@ const Title = styled.h2`
   margin-left: 1.5em;
 `;
 
-const data = [
-  { day: 1, sessionLength: 30 },
-  { day: 2, sessionLength: 40 },
-  { day: 3, sessionLength: 50 },
-  { day: 4, sessionLength: 30 },
-  { day: 5, sessionLength: 30 },
-  { day: 6, sessionLength: 50 },
-  { day: 7, sessionLength: 50 },
-];
+const LineChartDuration = ({ fetchUrl }) => {
+  const [userSessions, setUserSessions] = useState();
 
-const LineChartDuration = () => {
-  const MaxSessionLength = Math.max(...data.map((x) => x.sessionLength)) + 2;
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(fetchUrl);
+      setUserSessions(request.data.data.sessions);
+      return request;
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
-      <ChartWrapper id='lineChart'>
-        <Title>Durée moyenne des sessions</Title>
-        <ResponsiveContainer>
-          <LineChart width='300' height='300' data={data}>
-            <XAxis
-              dataKey='day'
-              tickLine={false}
-              tickFormatter={GetDayNameByOrder}
-              stroke='#FFFFFF'
-              axisLine={false}
-              height={35}
-              padding={{ left: 0, right: 5 }}
-            />
-            <YAxis
-              dataKey='sessionLength'
-              display='none'
-              domain={["auto", MaxSessionLength + 25]}
-              width={5}
-              tickCount={7}
-              tickLine={false}
-            />
-            <Line
-              type='monotone'
-              dataKey='sessionLength'
-              stroke='#FFFFFF'
-              width={5}
-              strokeWidth={2}
-              dot={false}
-            />
-            <Tooltip
-              cursor={{ opacity: 0.3, strokeWidth: 2 }}
-              contentStyle={{
-                backgroundColor: "#FFFFFF",
-                color: "#000000",
-                border: "none",
-                borderRadius: "6px",
-              }}
-              itemStyle={{ color: "#000", fontWeight: "bold" }}
-              labelFormatter={GetShortDayNameByOrder}
-              formatter={formatTimeValue}
-              separator=''
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </ChartWrapper>
+      {userSessions && (
+        <ChartWrapper id='lineChart'>
+          <Title>Durée moyenne des sessions</Title>
+          <ResponsiveContainer>
+            <LineChart width='300' height='300' data={userSessions}>
+              <XAxis
+                dataKey='day'
+                tickLine={false}
+                tickFormatter={GetDayNameByOrder}
+                stroke='#FFFFFF'
+                axisLine={false}
+                height={35}
+                padding={{ left: 0, right: 5 }}
+              />
+              <YAxis
+                dataKey='sessionLength'
+                display='none'
+                domain={[
+                  "auto",
+                  Math.max(...userSessions.map((x) => x.sessionLength)) +
+                    2 +
+                    25,
+                ]}
+                width={5}
+                tickCount={7}
+                tickLine={false}
+              />
+              <Line
+                type='monotone'
+                dataKey='sessionLength'
+                stroke='#FFFFFF'
+                width={5}
+                strokeWidth={2}
+                dot={false}
+              />
+              <Tooltip
+                cursor={{ opacity: 0.3, strokeWidth: 2 }}
+                contentStyle={{
+                  backgroundColor: "#FFFFFF",
+                  color: "#000000",
+                  border: "none",
+                  borderRadius: "6px",
+                }}
+                itemStyle={{ color: "#000", fontWeight: "bold" }}
+                labelFormatter={GetShortDayNameByOrder}
+                formatter={formatTimeValue}
+                separator=''
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </ChartWrapper>
+      )}
     </>
   );
 };

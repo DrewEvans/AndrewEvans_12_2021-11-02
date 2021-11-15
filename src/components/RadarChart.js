@@ -8,6 +8,8 @@ import {
 } from "recharts";
 import styled from "styled-components";
 import { formatKindValue, customizedLabel } from "../helpers/formatValues";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ChartWrapper = styled.div`
   height: 300px;
@@ -26,11 +28,23 @@ const data = [
   { value: 110, kind: 6 },
 ];
 
-const ActivtiyRadarChart = () => {
+const ActivtiyRadarChart = ({ fetchUrl }) => {
+  const [userPerformance, setUserPerformance] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(fetchUrl);
+      setUserPerformance(request.data.data.data);
+      return request;
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ChartWrapper>
       <ResponsiveContainer width='100%' height='100%'>
-        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={data}>
+        <RadarChart cx='50%' cy='50%' outerRadius='80%' data={userPerformance}>
           <PolarGrid />
           <PolarAngleAxis
             dataKey='kind'
