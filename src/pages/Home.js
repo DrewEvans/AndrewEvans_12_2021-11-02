@@ -15,6 +15,9 @@ import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
 import { faAppleAlt } from "@fortawesome/free-solid-svg-icons";
 import { faHamburger } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
 
 const fireIcon = <FontAwesomeIcon icon={faFire} />;
 const meatIcon = <FontAwesomeIcon icon={faDrumstickBite} />;
@@ -40,7 +43,7 @@ const MulitGridWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
-  width: 1300px;
+  width: 1150px;
 `;
 
 const Aside = styled.aside`
@@ -68,7 +71,27 @@ const Section = styled.section`
   margin-bottom: 5rem;
 `;
 
-export const Home = () => {
+const Home = () => {
+  const [userData, setUserData] = useState();
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(requests.fetchUser);
+      setUserData(request.data.data);
+      return request;
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const requests = {
+    fetchPerformance: `/user/${id}/performance`,
+    fetchSessions: `/user/${id}/average-sessions`,
+    fetchUser: `/user/${id}`,
+    fetchActivity: `/user/${id}/activity`,
+  };
+
   return (
     <>
       <Container>
@@ -79,45 +102,58 @@ export const Home = () => {
           <VerticalNav />
         </Aside>
         <Main>
-          <WelcomeHeader name='John' />
+          {userData && <WelcomeHeader name={userData.userInfos.firstName} />}
         </Main>
 
         <Content>
-          <ActivityBarChart />
+          <ActivityBarChart fetchUrl={requests.fetchActivity} />
           <MulitGridWrapper>
-            <LineChartDuration />
-            <ActivtiyRadarChart />
-            <ObjectiveRadialChart />
+            <LineChartDuration fetchUrl={requests.fetchSessions} />
+            <ActivtiyRadarChart fetchUrl={requests.fetchPerformance} />
+            {userData && (
+              <ObjectiveRadialChart
+                score={Math.floor(userData.todayScore * 100)}
+              />
+            )}
           </MulitGridWrapper>
         </Content>
 
         <Section>
-          <DailyActivityIcon
-            icon={fireIcon}
-            metricAbv='kCal'
-            type='Calories'
-            amount='1234'
-          />
-          <DailyActivityIcon
-            icon={meatIcon}
-            metricAbv='g'
-            type='Proteines'
-            amount='123'
-          />
-          <DailyActivityIcon
-            icon={appleIcon}
-            metricAbv='g'
-            type='Proteines'
-            amount='123'
-          />
-          <DailyActivityIcon
-            icon={hamburgerIcon}
-            metricAbv='g'
-            type='Lipides'
-            amount='12'
-          />
+          {userData && (
+            <DailyActivityIcon
+              icon={fireIcon}
+              metricAbv='kCal'
+              type='Calories'
+              amount={userData.keyData.calorieCount}
+            />
+          )}
+          {userData && (
+            <DailyActivityIcon
+              icon={meatIcon}
+              metricAbv='g'
+              type='Proteines'
+              amount={userData.keyData.proteinCount}
+            />
+          )}
+          {userData && (
+            <DailyActivityIcon
+              icon={appleIcon}
+              metricAbv='g'
+              type='Carbohydrate'
+              amount={userData.keyData.carbohydrateCount}
+            />
+          )}
+          {userData && (
+            <DailyActivityIcon
+              icon={hamburgerIcon}
+              metricAbv='g'
+              type='Lipides'
+              amount={userData.keyData.lipidCount}
+            />
+          )}
         </Section>
       </Container>
     </>
   );
 };
+export default Home;

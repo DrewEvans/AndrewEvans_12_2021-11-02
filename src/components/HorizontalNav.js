@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 
@@ -34,7 +35,9 @@ const HorizontalNav = () => {
   return (
     <>
       <NavWrapper>
-        <AppLogo src={Logo}></AppLogo>
+        <NavLink to={"/"}>
+          <AppLogo src={Logo}></AppLogo>
+        </NavLink>
         <NavList className='nav-list'>
           <NavLinks className='nav-links'>Accueil</NavLinks>
           <NavLinks className='nav-links'>Profil</NavLinks>
