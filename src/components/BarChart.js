@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, Label } from "recharts";
-import axios from "axios";
+import useFetch from "../hooks/useFetch";
 import PropType from "prop-types";
 import styled from "styled-components";
 
@@ -27,53 +26,16 @@ const ChartWrapper = styled.div`
  * )
  */
 const ActivityBarChart = ({ fetchUrl }) => {
-  /**
-   * @typedef {Object} userActivity
-   */
-
-  /**
-   * @callback userActivity
-   * @param {userActivity} state
-   * @returns {void}
-   */
-
-  /**
-   * @namespace {Object}
-   * @property {userActivity} null
-   * @property {userActivity} object
-   */
-  const [userActivity, setUserActivity] = useState();
-
-  useEffect(() => {
-    /**
-     * Download data from the specified URL.
-     *
-     * @async
-     * @function fetchUrl
-     * @param {string} url - The URL to fetch from.
-     * @return {Promise<string>} The data from the URL.
-     */
-    async function fetchData() {
-      /** @constant
-       * @type {string}
-       * @default
-       */
-      const request = await axios.get(fetchUrl);
-      setUserActivity(request.data.data.sessions);
-      return request;
-    }
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data } = useFetch(fetchUrl);
 
   return (
     <>
-      {userActivity && (
+      {data && (
         <ChartWrapper id='barChart'>
           <BarChart
             width={1300}
             height={270}
-            data={userActivity}
+            data={data.sessions}
             barGap={20}
             barCategoryGap='35%'
             margin={{
@@ -95,7 +57,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
               tickLine={false}
               domain={[
                 "auto",
-                Math.max(...userActivity.map((x) => x.kilogram)) + 2,
+                Math.max(...data.sessions.map((x) => x.kilogram)) + 2,
               ]}
               tickCount={3}
             />
@@ -105,7 +67,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
               stroke='none'
               domain={[
                 "auto",
-                Math.max(...userActivity.map((x) => x.calories)) + 2,
+                Math.max(...data.sessions.map((x) => x.calories)) + 2,
               ]}
               tickCount={5}
             />

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: HorizontalNav</title>
+    <title>JSDoc: Source: src/hooks/useFetch.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,142 +17,64 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: HorizontalNav</h1>
+    <h1 class="page-title">Source: src/hooks/useFetch.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>HorizontalNav<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    
-    <h4 class="name" id="HorizontalNav"><span class="type-signature"></span>new HorizontalNav<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Component for horizontal Nav bar.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_components_HorizontalNav.js.html">src/components/HorizontalNav.js</a>, <a href="src_components_HorizontalNav.js.html#line47">line 47</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>return (&lt;HorizontalNav  />)</code></pre>
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react";
+import axios from "axios";
+
+function useFetch(url) {
+  /**
+   * @typedef {Object} state
+   */
+
+  /**
+   * @callback state
+   * @param {state} state
+   * @returns {void}
+   */
+
+  /**
+   * @namespace {Object}
+   * @property {state} null
+   * @property {state} object
+   */
+  const [state, setState] = useState({ data: null, loading: true });
+
+  useEffect(() => {
+    setState({ data: null, loading: false });
+    /**
+     * Download data from the specified URL.
+     *
+     * @async
+     * @function fetchUrl
+     * @param {string} url - The URL to fetch from.
+     * @return {Promise&lt;string>} The data from the URL.
+     */
+    async function fetchData() {
+      /** @constant
+       * @type {string}
+       * @default
+       */
+      const request = await axios.get(url);
+      setState({ data: request.data.data, loading: false });
+    }
+    fetchData();
+  }, [url]);
+
+  return state;
+}
+
+export default useFetch;
+</code></pre>
+        </article>
+    </section>
 
 
 

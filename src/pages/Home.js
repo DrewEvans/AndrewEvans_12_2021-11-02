@@ -8,16 +8,14 @@ import {
   ActivtiyRadarChart,
   ObjectiveRadialChart,
 } from "../components/index";
-
+import { useParams } from "react-router";
+import useFetch from "../hooks/useFetch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
 import { faAppleAlt } from "@fortawesome/free-solid-svg-icons";
 import { faHamburger } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams } from "react-router";
 
 const fireIcon = <FontAwesomeIcon icon={faFire} />;
 const meatIcon = <FontAwesomeIcon icon={faDrumstickBite} />;
@@ -84,58 +82,16 @@ const Section = styled.section`
  */
 
 const Home = () => {
-  /**
-   * @typedef {Object} userData
-   */
-
-  /**
-   * @callback userData
-   * @param {userData} state
-   * @returns {void}
-   */
-
-  /**
-   * @namespace {Object}
-   * @property {userData} null
-   * @property {userData} object
-   */
-
-  const [userData, setUserData] = useState();
-
   const { id } = useParams();
 
-  useEffect(() => {
-    /**
-     * Download data from the specified URL.
-     *
-     * @async
-     * @function fetchUrl
-     * @param {string} url - The URL to fetch from.
-     * @return {Promise<string>} The data from the URL.
-     */
-    async function fetchData() {
-      /** @constant
-       * @type {string}
-       * @default
-       */
-      const request = await axios.get(requests.fetchUser);
-      setUserData(request.data.data);
-      return request;
-    }
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /** @constant
-   * @type {object}
-   * @default
-   */
   const requests = {
     fetchPerformance: `/user/${id}/performance`,
     fetchSessions: `/user/${id}/average-sessions`,
     fetchUser: `/user/${id}`,
     fetchActivity: `/user/${id}/activity`,
   };
+
+  const { data } = useFetch(requests.fetchUser);
 
   return (
     <>
@@ -146,54 +102,50 @@ const Home = () => {
         <Aside>
           <VerticalNav />
         </Aside>
-        <Main>
-          {userData && <WelcomeHeader name={userData.userInfos.firstName} />}
-        </Main>
+        <Main>{data && <WelcomeHeader name={data.userInfos.firstName} />}</Main>
 
         <Content>
           <ActivityBarChart fetchUrl={requests.fetchActivity} />
           <MulitGridWrapper>
             <LineChartDuration fetchUrl={requests.fetchSessions} />
             <ActivtiyRadarChart fetchUrl={requests.fetchPerformance} />
-            {userData && (
-              <ObjectiveRadialChart
-                score={Math.floor(userData.todayScore * 100)}
-              />
+            {data && (
+              <ObjectiveRadialChart score={Math.floor(data.todayScore * 100)} />
             )}
           </MulitGridWrapper>
         </Content>
 
         <Section>
-          {userData && (
+          {data && (
             <DailyActivityIcon
               icon={fireIcon}
               metricAbv='kCal'
               type='Calories'
-              amount={userData.keyData.calorieCount}
+              amount={data.keyData.calorieCount}
             />
           )}
-          {userData && (
+          {data && (
             <DailyActivityIcon
               icon={meatIcon}
               metricAbv='g'
               type='Proteines'
-              amount={userData.keyData.proteinCount}
+              amount={data.keyData.proteinCount}
             />
           )}
-          {userData && (
+          {data && (
             <DailyActivityIcon
               icon={appleIcon}
               metricAbv='g'
               type='Carbohydrate'
-              amount={userData.keyData.carbohydrateCount}
+              amount={data.keyData.carbohydrateCount}
             />
           )}
-          {userData && (
+          {data && (
             <DailyActivityIcon
               icon={hamburgerIcon}
               metricAbv='g'
               type='Lipides'
-              amount={userData.keyData.lipidCount}
+              amount={data.keyData.lipidCount}
             />
           )}
         </Section>
