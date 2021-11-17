@@ -11,10 +11,9 @@ import {
   GetShortDayNameByOrder,
 } from "../helpers/getDayNameByOrder";
 import { formatTimeValue } from "../helpers/formatValues";
-import { useState, useEffect } from "react";
 import PropType from "prop-types";
-import axios from "axios";
 import styled from "styled-components";
+import useFetch from "../hooks/useFetch";
 
 const ChartWrapper = styled.div`
   height: 300px;
@@ -54,52 +53,15 @@ const Title = styled.h2`
  */
 
 const LineChartDuration = ({ fetchUrl }) => {
-  /**
-   * @typedef {Object} userSessions
-   */
-
-  /**
-   * @callback userSessions
-   * @param {userSessions} state
-   * @returns {void}
-   */
-
-  /**
-   * @namespace {Object}
-   * @property {userSessions} null
-   * @property {userSessions} object
-   */
-  const [userSessions, setUserSessions] = useState();
-
-  useEffect(() => {
-    /**
-     * Download data from the specified URL.
-     *
-     * @async
-     * @function fetchUrl
-     * @param {string} url - The URL to fetch from.
-     * @return {Promise<string>} The data from the URL.
-     */
-    async function fetchData() {
-      /** @constant
-       * @type {string}
-       * @default
-       */
-      const request = await axios.get(fetchUrl);
-      setUserSessions(request.data.data.sessions);
-      return request;
-    }
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { data } = useFetch(fetchUrl);
 
   return (
     <>
-      {userSessions && (
+      {data && (
         <ChartWrapper id='lineChart'>
           <Title>Durée moyenne des sessions</Title>
           <ResponsiveContainer>
-            <LineChart width='300' height='300' data={userSessions}>
+            <LineChart width='300' height='300' data={data.sessions}>
               <XAxis
                 dataKey='day'
                 tickLine={false}
@@ -114,7 +76,7 @@ const LineChartDuration = ({ fetchUrl }) => {
                 display='none'
                 domain={[
                   "auto",
-                  Math.max(...userSessions.map((x) => x.sessionLength)) +
+                  Math.max(...data.sessions.map((x) => x.sessionLength)) +
                     2 +
                     25,
                 ]}
