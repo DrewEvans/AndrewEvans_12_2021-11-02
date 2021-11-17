@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: server/models.js</title>
+    <title>JSDoc: Source: src/components/VerticalNav.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: server/models.js</h1>
+    <h1 class="page-title">Source: src/components/VerticalNav.js</h1>
 
     
 
@@ -26,48 +26,88 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const {
-  USER_MAIN_DATA,
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_PERFORMANCE,
-} = require("./data");
+            <pre class="prettyprint source linenums"><code>import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
+import { faBiking } from "@fortawesome/free-solid-svg-icons";
+import { faChild } from "@fortawesome/free-solid-svg-icons";
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const swimmerIcon = &lt;FontAwesomeIcon icon={faSwimmer} />;
+const bikingIcon = &lt;FontAwesomeIcon icon={faBiking} />;
+const strecthingIcon = &lt;FontAwesomeIcon icon={faChild} />;
+const dumbellIcon = &lt;FontAwesomeIcon icon={faDumbbell} />;
+
+const NavWrapper = styled.div`
+  background-color: black;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+`;
+
+const IconWrapper = styled.div`
+  justify-self: center;
+`;
+
+const NavIcon = styled.div`
+  color: red;
+  background-color: #fff;
+  font-size: 1.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5em 0;
+  height: 64px;
+  width: 64px;
+  border-radius: 6px;
+`;
+
+const Copyright = styled.p`
+  color: #fff;
+  font-size: 1em;
+  width: 180px;
+  transform: rotate(-90deg);
+`;
 
 /**
- * @description Retrieve the main user info (first name, last name, today score)
- * @param {number} id
+ * Component for vertical Nav Bar.
+ *
+ * @component
+ * @example
+ *
+ *
+ * return (
+ * &lt;VerticalNav  />
+ * )
+ *
  */
-const getUserById = (id) =>
-  USER_MAIN_DATA.filter((user) => user.id === id).shift();
 
-/**
- * @param {number} id
- */
-const getUserActivityById = (id) =>
-  USER_ACTIVITY.filter((userActivity) => userActivity.userId === id).shift();
-
-/**
- * @param {number} id
- */
-const getUserAverageSession = (id) =>
-  USER_AVERAGE_SESSIONS.filter(
-    (userActivity) => userActivity.userId === id
-  ).shift();
-
-/**
- * @param {number} id
- */
-const getUserPerformance = (id) =>
-  USER_PERFORMANCE.filter(
-    (userPerformance) => userPerformance.userId === id
-  ).shift();
-
-module.exports = {
-  getUserById,
-  getUserActivityById,
-  getUserAverageSession,
-  getUserPerformance,
+const VerticalNav = () => {
+  return (
+    &lt;NavWrapper>
+      &lt;IconWrapper>
+        &lt;Link to='/'>
+          &lt;NavIcon>{strecthingIcon}&lt;/NavIcon>
+        &lt;/Link>
+        &lt;Link to='/'>
+          &lt;NavIcon>{swimmerIcon}&lt;/NavIcon>
+        &lt;/Link>
+        &lt;Link to='/'>
+          &lt;NavIcon>{bikingIcon}&lt;/NavIcon>
+        &lt;/Link>
+        &lt;Link to='/'>
+          &lt;NavIcon>{dumbellIcon}&lt;/NavIcon>
+        &lt;/Link>
+      &lt;/IconWrapper>
+      &lt;Copyright>Copiryght, SportSee 2020&lt;/Copyright>
+    &lt;/NavWrapper>
+  );
 };
+export default VerticalNav;
 </code></pre>
         </article>
     </section>

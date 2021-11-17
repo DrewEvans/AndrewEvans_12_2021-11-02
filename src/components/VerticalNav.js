@@ -3,6 +3,7 @@ import { faSwimmer } from "@fortawesome/free-solid-svg-icons";
 import { faBiking } from "@fortawesome/free-solid-svg-icons";
 import { faChild } from "@fortawesome/free-solid-svg-icons";
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const swimmerIcon = <FontAwesomeIcon icon={faSwimmer} />;
@@ -44,19 +45,38 @@ const Copyright = styled.p`
   transform: rotate(-90deg);
 `;
 
+/**
+ * Component for vertical Nav Bar.
+ *
+ * @component
+ * @example
+ *
+ *
+ * return (
+ * <VerticalNav  />
+ * )
+ *
+ */
+
 const VerticalNav = () => {
   return (
-    <>
-      <NavWrapper>
-        <IconWrapper>
+    <NavWrapper>
+      <IconWrapper>
+        <Link to='/'>
           <NavIcon>{strecthingIcon}</NavIcon>
+        </Link>
+        <Link to='/'>
           <NavIcon>{swimmerIcon}</NavIcon>
+        </Link>
+        <Link to='/'>
           <NavIcon>{bikingIcon}</NavIcon>
+        </Link>
+        <Link to='/'>
           <NavIcon>{dumbellIcon}</NavIcon>
-        </IconWrapper>
-        <Copyright>Copiryght, SportSee 2020</Copyright>
-      </NavWrapper>
-    </>
+        </Link>
+      </IconWrapper>
+      <Copyright>Copiryght, SportSee 2020</Copyright>
+    </NavWrapper>
   );
 };
 export default VerticalNav;

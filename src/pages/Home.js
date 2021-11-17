@@ -71,12 +71,53 @@ const Section = styled.section`
   margin-bottom: 5rem;
 `;
 
+/**
+ * Principal Component for showing details of the user.
+ *
+ * @component
+ * @example
+ *
+ * list of components returned:
+ * HorizontalNav, VerticalNav, WelcomeHeader, DailyActivityIcon,
+ * ActivityBarChart, LineChartDuration, ActivtiyRadarChart, ObjectiveRadialChart,
+ *
+ */
+
 const Home = () => {
+  /**
+   * @typedef {Object} userData
+   */
+
+  /**
+   * @callback userData
+   * @param {userData} state
+   * @returns {void}
+   */
+
+  /**
+   * @namespace {Object}
+   * @property {userData} null
+   * @property {userData} object
+   */
+
   const [userData, setUserData] = useState();
+
   const { id } = useParams();
 
   useEffect(() => {
+    /**
+     * Download data from the specified URL.
+     *
+     * @async
+     * @function fetchUrl
+     * @param {string} url - The URL to fetch from.
+     * @return {Promise<string>} The data from the URL.
+     */
     async function fetchData() {
+      /** @constant
+       * @type {string}
+       * @default
+       */
       const request = await axios.get(requests.fetchUser);
       setUserData(request.data.data);
       return request;
@@ -85,6 +126,10 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /** @constant
+   * @type {object}
+   * @default
+   */
   const requests = {
     fetchPerformance: `/user/${id}/performance`,
     fetchSessions: `/user/${id}/average-sessions`,

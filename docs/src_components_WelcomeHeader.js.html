@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: server/models.js</title>
+    <title>JSDoc: Source: src/components/WelcomeHeader.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: server/models.js</h1>
+    <h1 class="page-title">Source: src/components/WelcomeHeader.js</h1>
 
     
 
@@ -26,47 +26,57 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const {
-  USER_MAIN_DATA,
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_PERFORMANCE,
-} = require("./data");
+            <pre class="prettyprint source linenums"><code>import Emoji from "a11y-react-emoji";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+const Wrapper = styled.div`
+  margin: 2.5em 10em;
+`;
+
+const Title = styled.h1`
+  font-size: 3em;
+`;
+
+const NameCallout = styled.span`
+  color: red;
+`;
+
+const MotivationalText = styled.p`
+  font-weight: 400;
+  font-size: 2em;
+  margin: 0.25em 0;
+`;
 
 /**
- * @description Retrieve the main user info (first name, last name, today score)
- * @param {number} id
+ * Component for showing welcome message to the user.
+ *
+ * @component
+ * @example
+ * const name = firstName
+ *
+ * return (
+ *   &lt;WelcomeHeader name={firstName} >
+ * )
  */
-const getUserById = (id) =>
-  USER_MAIN_DATA.filter((user) => user.id === id).shift();
 
-/**
- * @param {number} id
- */
-const getUserActivityById = (id) =>
-  USER_ACTIVITY.filter((userActivity) => userActivity.userId === id).shift();
+const WelcomeHeader = ({ name }) => {
+  return (
+    &lt;Wrapper>
+      &lt;Title>
+        Bonjour &lt;NameCallout>{name}&lt;/NameCallout>
+      &lt;/Title>
+      &lt;MotivationalText>
+        Félications ! Vous avez explosé vos objectifs hier{" "}
+        &lt;Emoji symbol='👏' label='hand clap' />
+      &lt;/MotivationalText>
+    &lt;/Wrapper>
+  );
+};
+export default WelcomeHeader;
 
-/**
- * @param {number} id
- */
-const getUserAverageSession = (id) =>
-  USER_AVERAGE_SESSIONS.filter(
-    (userActivity) => userActivity.userId === id
-  ).shift();
-
-/**
- * @param {number} id
- */
-const getUserPerformance = (id) =>
-  USER_PERFORMANCE.filter(
-    (userPerformance) => userPerformance.userId === id
-  ).shift();
-
-module.exports = {
-  getUserById,
-  getUserActivityById,
-  getUserAverageSession,
-  getUserPerformance,
+WelcomeHeader.propTypes = {
+  name: PropTypes.string,
 };
 </code></pre>
         </article>

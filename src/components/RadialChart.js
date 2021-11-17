@@ -4,6 +4,7 @@ import {
   PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const ChartWrapper = styled.div`
@@ -27,7 +28,26 @@ const circleSize = 300;
 
 const sub = 270;
 
+/**
+ * Component for showing user details in the form of radial graph.
+ *
+ * @component
+ * @example
+ *
+ * displays user progress
+ *
+ * return (
+ * <ObjectiveRadialChart score={todayScore} />
+ * )
+ *
+ */
+
 const ObjectiveRadialChart = ({ score }) => {
+  /** @constant
+   * @type {object}
+   * @param {number} - score
+   * @default
+   */
   const data = [
     {
       name: "percentage",
@@ -81,3 +101,10 @@ const ObjectiveRadialChart = ({ score }) => {
 };
 
 export default ObjectiveRadialChart;
+
+ObjectiveRadialChart.propTypes = {
+  /**
+   * API Endpoint
+   */
+  score: PropTypes.number,
+};

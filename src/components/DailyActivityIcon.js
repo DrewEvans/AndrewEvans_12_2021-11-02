@@ -1,3 +1,4 @@
+import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -73,20 +74,48 @@ const TextWrapper = styled.p`
   margin: 0.25em;
 `;
 
+/**
+ * Component for showing details of the user.
+ *
+ * @component
+ * @example
+ * const icon = fire
+ * const metricAbv = 'cKcal'
+ * const type = 'Calories'
+ * const amount = '2500'
+ *
+ * return (
+ *   <DailyIcon icon={flame} metricAbv={'cKal'} type={'calories'} amount={calorieCount} />
+ * )
+ */
+
 const DailyActivityIcon = ({ icon, metricAbv, type, amount }) => {
   return (
-    <>
-      <Wrapper>
-        <IconWrapper>{icon}</IconWrapper>
-        <AmountWrapper>
-          <TextAmount>
-            {amount}
-            {metricAbv}
-          </TextAmount>
-          <TextWrapper>{type}</TextWrapper>
-        </AmountWrapper>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <IconWrapper>{icon}</IconWrapper>
+      <AmountWrapper>
+        <TextAmount>
+          {amount}
+          {metricAbv}
+        </TextAmount>
+        <TextWrapper>{type}</TextWrapper>
+      </AmountWrapper>
+    </Wrapper>
   );
 };
 export default DailyActivityIcon;
+
+DailyActivityIcon.propTypes = {
+  /**
+   * Intake Type abbreviation
+   */
+  metricAbv: PropTypes.string,
+  /**
+   * User Daily Intake Type
+   */
+  type: PropTypes.string,
+  /**
+   * User Daily Intake Amount
+   */
+  amount: PropTypes.number,
+};

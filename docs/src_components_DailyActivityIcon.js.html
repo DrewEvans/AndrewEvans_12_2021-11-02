@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/components/DailyActivityIcon.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/components/DailyActivityIcon.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { PropTypes } from "prop-types";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  background-color: #fbfbfb;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+  border-radius: 5px;
+  width: 18rem;
+  height: 7.5rem;
+  margin-top: 2.5em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+/*
+ * If icon prop name matches one of the four labeled use the theme
+ * css color objects located on ../index.js for the designs
+ */
+const IconWrapper = styled.div`
+  background-color: ${(props) => {
+    if (props.children.props.icon.iconName === "fire") {
+      return props.theme.redIconBg;
+    }
+    if (props.children.props.icon.iconName === "drumstick-bite") {
+      return props.theme.blueIconBg;
+    }
+    if (props.children.props.icon.iconName === "apple-alt") {
+      return props.theme.yellowIconBg;
+    }
+    if (props.children.props.icon.iconName === "hamburger") {
+      return props.theme.pinkIconBg;
+    }
+  }};
+  color: ${(props) => {
+    if (props.children.props.icon.iconName === "fire") {
+      return props.theme.redIcon;
+    }
+    if (props.children.props.icon.iconName === "drumstick-bite") {
+      return props.theme.blueIcon;
+    }
+    if (props.children.props.icon.iconName === "apple-alt") {
+      return props.theme.yellowIcon;
+    }
+    if (props.children.props.icon.iconName === "hamburger") {
+      return props.theme.pinkIcon;
+    }
+  }};
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+`;
+
+const AmountWrapper = styled.div`
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const TextAmount = styled.p`
+  color: #f2f2f2f;
+  font-size: 1.5em;
+  margin: 0.25em;
+`;
+
+const TextWrapper = styled.p`
+  color: #74798c;
+  font-size: 1em;
+  margin: 0.25em;
+`;
+
+/**
+ * Component for showing details of the user.
+ *
+ * @component
+ * @example
+ * const icon = fire
+ * const metricAbv = 'cKcal'
+ * const type = 'Calories'
+ * const amount = '2500'
+ *
+ * return (
+ *   &lt;DailyIcon icon={flame} metricAbv={'cKal'} type={'calories'} amount={calorieCount} />
+ * )
+ */
+
+const DailyActivityIcon = ({ icon, metricAbv, type, amount }) => {
+  return (
+    &lt;Wrapper>
+      &lt;IconWrapper>{icon}&lt;/IconWrapper>
+      &lt;AmountWrapper>
+        &lt;TextAmount>
+          {amount}
+          {metricAbv}
+        &lt;/TextAmount>
+        &lt;TextWrapper>{type}&lt;/TextWrapper>
+      &lt;/AmountWrapper>
+    &lt;/Wrapper>
+  );
+};
+export default DailyActivityIcon;
+
+DailyActivityIcon.propTypes = {
+  /**
+   * Intake Type abbreviation
+   */
+  metricAbv: PropTypes.string,
+  /**
+   * User Daily Intake Type
+   */
+  type: PropTypes.string,
+  /**
+   * User Daily Intake Amount
+   */
+  amount: PropTypes.number,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Nov 17 2021 12:15:27 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

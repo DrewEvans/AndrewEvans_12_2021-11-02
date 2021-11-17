@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 
@@ -31,21 +31,40 @@ const AppLogo = styled.img`
   width: 178px;
 `;
 
+/**
+ * Component for horizontal Nav bar.
+ *
+ * @component
+ * @example
+ *
+ *
+ * return (
+ * <HorizontalNav  />
+ * )
+ *
+ */
+
 const HorizontalNav = () => {
   return (
-    <>
-      <NavWrapper>
-        <NavLink to={"/"}>
-          <AppLogo src={Logo}></AppLogo>
-        </NavLink>
-        <NavList className='nav-list'>
+    <NavWrapper>
+      <NavLink to={"/"}>
+        <AppLogo src={Logo}></AppLogo>
+      </NavLink>
+      <NavList className='nav-list'>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
           <NavLinks className='nav-links'>Accueil</NavLinks>
+        </Link>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
           <NavLinks className='nav-links'>Profil</NavLinks>
+        </Link>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
           <NavLinks className='nav-links'>Réglage</NavLinks>
+        </Link>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
           <NavLinks className='nav-links'>Communaté</NavLinks>
-        </NavList>
-      </NavWrapper>
-    </>
+        </Link>
+      </NavList>
+    </NavWrapper>
   );
 };
 
