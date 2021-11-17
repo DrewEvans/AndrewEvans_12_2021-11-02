@@ -1,4 +1,4 @@
-![SportSee]("./src/assets/logo.png")
+![SportSee]("/blob/master/src/assets/logo.svg")
 
 # Getting Started with Create React App
 
