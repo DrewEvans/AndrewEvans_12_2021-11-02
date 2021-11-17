@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/pages/Home.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/pages/Home.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  HorizontalNav,
+  VerticalNav,
+  WelcomeHeader,
+  DailyActivityIcon,
+  ActivityBarChart,
+  LineChartDuration,
+  ActivtiyRadarChart,
+  ObjectiveRadialChart,
+} from "../components/index";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFire } from "@fortawesome/free-solid-svg-icons";
+import { faDrumstickBite } from "@fortawesome/free-solid-svg-icons";
+import { faAppleAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHamburger } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
+
+const fireIcon = &lt;FontAwesomeIcon icon={faFire} />;
+const meatIcon = &lt;FontAwesomeIcon icon={faDrumstickBite} />;
+const appleIcon = &lt;FontAwesomeIcon icon={faAppleAlt} />;
+const hamburgerIcon = &lt;FontAwesomeIcon icon={faHamburger} />;
+
+const Container = styled.div`
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 0.2fr 2.1fr 0.7fr;
+  grid-template-rows: 0.3fr 0.6fr 2.1fr;
+  grid-template-areas:
+    "nav nav nav"
+    "aside main main"
+    "aside content section";
+`;
+
+const Main = styled.main`
+  grid-area: main;
+`;
+
+const MulitGridWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 1150px;
+`;
+
+const Aside = styled.aside`
+  grid-area: aside;
+`;
+
+const NavBar = styled.nav`
+  grid-area: nav;
+`;
+
+const Content = styled.div`
+  grid-area: content;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: Column;
+  justify-content: space-between;
+  flex-wrap: Wrap;
+`;
+
+const Section = styled.section`
+  grid-area: section;
+  display flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 5rem;
+`;
+
+/**
+ * Principal Component for showing details of the user.
+ *
+ * @component
+ * @example
+ *
+ * list of components returned:
+ * HorizontalNav, VerticalNav, WelcomeHeader, DailyActivityIcon,
+ * ActivityBarChart, LineChartDuration, ActivtiyRadarChart, ObjectiveRadialChart,
+ *
+ */
+
+const Home = () => {
+  /**
+   * @typedef {Object} userData
+   */
+
+  /**
+   * @callback userData
+   * @param {userData} state
+   * @returns {void}
+   */
+
+  /**
+   * @namespace {Object}
+   * @property {userData} null
+   * @property {userData} object
+   */
+
+  const [userData, setUserData] = useState();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    /**
+     * Download data from the specified URL.
+     *
+     * @async
+     * @function fetchUrl
+     * @param {string} url - The URL to fetch from.
+     * @return {Promise&lt;string>} The data from the URL.
+     */
+    async function fetchData() {
+      /** @constant
+       * @type {string}
+       * @default
+       */
+      const request = await axios.get(requests.fetchUser);
+      setUserData(request.data.data);
+      return request;
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /** @constant
+   * @type {object}
+   * @default
+   */
+  const requests = {
+    fetchPerformance: `/user/${id}/performance`,
+    fetchSessions: `/user/${id}/average-sessions`,
+    fetchUser: `/user/${id}`,
+    fetchActivity: `/user/${id}/activity`,
+  };
+
+  return (
+    &lt;>
+      &lt;Container>
+        &lt;NavBar>
+          &lt;HorizontalNav />
+        &lt;/NavBar>
+        &lt;Aside>
+          &lt;VerticalNav />
+        &lt;/Aside>
+        &lt;Main>
+          {userData &amp;&amp; &lt;WelcomeHeader name={userData.userInfos.firstName} />}
+        &lt;/Main>
+
+        &lt;Content>
+          &lt;ActivityBarChart fetchUrl={requests.fetchActivity} />
+          &lt;MulitGridWrapper>
+            &lt;LineChartDuration fetchUrl={requests.fetchSessions} />
+            &lt;ActivtiyRadarChart fetchUrl={requests.fetchPerformance} />
+            {userData &amp;&amp; (
+              &lt;ObjectiveRadialChart
+                score={Math.floor(userData.todayScore * 100)}
+              />
+            )}
+          &lt;/MulitGridWrapper>
+        &lt;/Content>
+
+        &lt;Section>
+          {userData &amp;&amp; (
+            &lt;DailyActivityIcon
+              icon={fireIcon}
+              metricAbv='kCal'
+              type='Calories'
+              amount={userData.keyData.calorieCount}
+            />
+          )}
+          {userData &amp;&amp; (
+            &lt;DailyActivityIcon
+              icon={meatIcon}
+              metricAbv='g'
+              type='Proteines'
+              amount={userData.keyData.proteinCount}
+            />
+          )}
+          {userData &amp;&amp; (
+            &lt;DailyActivityIcon
+              icon={appleIcon}
+              metricAbv='g'
+              type='Carbohydrate'
+              amount={userData.keyData.carbohydrateCount}
+            />
+          )}
+          {userData &amp;&amp; (
+            &lt;DailyActivityIcon
+              icon={hamburgerIcon}
+              metricAbv='g'
+              type='Lipides'
+              amount={userData.keyData.lipidCount}
+            />
+          )}
+        &lt;/Section>
+      &lt;/Container>
+    &lt;/>
+  );
+};
+export default Home;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Nov 17 2021 12:15:27 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

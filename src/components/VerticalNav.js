@@ -45,27 +45,38 @@ const Copyright = styled.p`
   transform: rotate(-90deg);
 `;
 
+/**
+ * Component for vertical Nav Bar.
+ *
+ * @component
+ * @example
+ *
+ *
+ * return (
+ * <VerticalNav  />
+ * )
+ *
+ */
+
 const VerticalNav = () => {
   return (
-    <>
-      <NavWrapper>
-        <IconWrapper>
-          <Link to='/'>
-            <NavIcon>{strecthingIcon}</NavIcon>
-          </Link>
-          <Link to='/'>
-            <NavIcon>{swimmerIcon}</NavIcon>
-          </Link>
-          <Link to='/'>
-            <NavIcon>{bikingIcon}</NavIcon>
-          </Link>
-          <Link to='/'>
-            <NavIcon>{dumbellIcon}</NavIcon>
-          </Link>
-        </IconWrapper>
-        <Copyright>Copiryght, SportSee 2020</Copyright>
-      </NavWrapper>
-    </>
+    <NavWrapper>
+      <IconWrapper>
+        <Link to='/'>
+          <NavIcon>{strecthingIcon}</NavIcon>
+        </Link>
+        <Link to='/'>
+          <NavIcon>{swimmerIcon}</NavIcon>
+        </Link>
+        <Link to='/'>
+          <NavIcon>{bikingIcon}</NavIcon>
+        </Link>
+        <Link to='/'>
+          <NavIcon>{dumbellIcon}</NavIcon>
+        </Link>
+      </IconWrapper>
+      <Copyright>Copiryght, SportSee 2020</Copyright>
+    </NavWrapper>
   );
 };
 export default VerticalNav;

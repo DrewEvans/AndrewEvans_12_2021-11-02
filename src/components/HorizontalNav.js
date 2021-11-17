@@ -31,29 +31,40 @@ const AppLogo = styled.img`
   width: 178px;
 `;
 
+/**
+ * Component for horizontal Nav bar.
+ *
+ * @component
+ * @example
+ *
+ *
+ * return (
+ * <HorizontalNav  />
+ * )
+ *
+ */
+
 const HorizontalNav = () => {
   return (
-    <>
-      <NavWrapper>
-        <NavLink to={"/"}>
-          <AppLogo src={Logo}></AppLogo>
-        </NavLink>
-        <NavList className='nav-list'>
-          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
-            <NavLinks className='nav-links'>Accueil</NavLinks>
-          </Link>
-          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
-            <NavLinks className='nav-links'>Profil</NavLinks>
-          </Link>
-          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
-            <NavLinks className='nav-links'>Réglage</NavLinks>
-          </Link>
-          <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
-            <NavLinks className='nav-links'>Communaté</NavLinks>
-          </Link>
-        </NavList>
-      </NavWrapper>
-    </>
+    <NavWrapper>
+      <NavLink to={"/"}>
+        <AppLogo src={Logo}></AppLogo>
+      </NavLink>
+      <NavList className='nav-list'>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          <NavLinks className='nav-links'>Accueil</NavLinks>
+        </Link>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          <NavLinks className='nav-links'>Profil</NavLinks>
+        </Link>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          <NavLinks className='nav-links'>Réglage</NavLinks>
+        </Link>
+        <Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          <NavLinks className='nav-links'>Communaté</NavLinks>
+        </Link>
+      </NavList>
+    </NavWrapper>
   );
 };
 

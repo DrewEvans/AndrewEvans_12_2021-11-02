@@ -1,4 +1,32 @@
-import { useState, useEffect } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/components/BarChart.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/components/BarChart.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, Label } from "recharts";
 import axios from "axios";
 import PropType from "prop-types";
@@ -23,7 +51,7 @@ const ChartWrapper = styled.div`
  * displays users Activity
  *
  * return (
- *   <ActivityBarChart fetchUrl={url} />
+ *   &lt;ActivityBarChart fetchUrl={url} />
  * )
  */
 const ActivityBarChart = ({ fetchUrl }) => {
@@ -51,7 +79,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
      * @async
      * @function fetchUrl
      * @param {string} url - The URL to fetch from.
-     * @return {Promise<string>} The data from the URL.
+     * @return {Promise&lt;string>} The data from the URL.
      */
     async function fetchData() {
       /** @constant
@@ -67,10 +95,10 @@ const ActivityBarChart = ({ fetchUrl }) => {
   }, []);
 
   return (
-    <>
-      {userActivity && (
-        <ChartWrapper id='barChart'>
-          <BarChart
+    &lt;>
+      {userActivity &amp;&amp; (
+        &lt;ChartWrapper id='barChart'>
+          &lt;BarChart
             width={1300}
             height={270}
             data={userActivity}
@@ -82,10 +110,10 @@ const ActivityBarChart = ({ fetchUrl }) => {
               left: 100,
               bottom: 20,
             }}>
-            <XAxis dataKey='day' tickLine={false}>
-              <Label value='Activité quotidienne' position='top' offset={200} />
-            </XAxis>
-            <YAxis
+            &lt;XAxis dataKey='day' tickLine={false}>
+              &lt;Label value='Activité quotidienne' position='top' offset={200} />
+            &lt;/XAxis>
+            &lt;YAxis
               yAxisId='left'
               orientation='right'
               stroke='#282D30'
@@ -99,7 +127,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
               ]}
               tickCount={3}
             />
-            <YAxis
+            &lt;YAxis
               yAxisId='right'
               orientation='left'
               stroke='none'
@@ -109,7 +137,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
               ]}
               tickCount={5}
             />
-            <Bar
+            &lt;Bar
               yAxisId='left'
               dataKey='kilogram'
               name='Poids (kg)'
@@ -118,7 +146,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
               legendType='circle'
               radius={[10, 10, 0, 0]}
             />
-            <Bar
+            &lt;Bar
               yAxisId='right'
               dataKey='calories'
               name='Calories brûlées (kCal)'
@@ -126,7 +154,7 @@ const ActivityBarChart = ({ fetchUrl }) => {
               legendType='circle'
               radius={[10, 10, 0, 0]}
             />
-            <Tooltip
+            &lt;Tooltip
               cursor={{ opacity: 0.3, strokeWidth: 2 }}
               contentStyle={{
                 backgroundColor: "red",
@@ -136,15 +164,15 @@ const ActivityBarChart = ({ fetchUrl }) => {
               }}
               itemStyle={{ color: "white" }}
             />
-            <Legend
+            &lt;Legend
               wrapperStyle={{ top: "0%" }}
               verticalAlign='top'
               align='right'
             />
-          </BarChart>
-        </ChartWrapper>
+          &lt;/BarChart>
+        &lt;/ChartWrapper>
       )}
-    </>
+    &lt;/>
   );
 };
 
@@ -156,3 +184,26 @@ ActivityBarChart.propType = {
    */
   fetchUrl: PropType.string,
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Nov 17 2021 12:15:27 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

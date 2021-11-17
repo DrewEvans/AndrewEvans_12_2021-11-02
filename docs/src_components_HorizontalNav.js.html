@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: server/models.js</title>
+    <title>JSDoc: Source: src/components/HorizontalNav.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: server/models.js</h1>
+    <h1 class="page-title">Source: src/components/HorizontalNav.js</h1>
 
     
 
@@ -26,48 +26,77 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const {
-  USER_MAIN_DATA,
-  USER_ACTIVITY,
-  USER_AVERAGE_SESSIONS,
-  USER_PERFORMANCE,
-} = require("./data");
+            <pre class="prettyprint source linenums"><code>import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
+import Logo from "../assets/logo.svg";
+
+const NavWrapper = styled.div`
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+const NavList = styled.ul`
+  color: White;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  list-style-type: none;
+`;
+
+const NavLinks = styled.li`
+  margin: 0 0.25em;
+`;
+
+const AppLogo = styled.img`
+  margin: 0 1.5em;
+  height: 61px;
+  width: 178px;
+`;
 
 /**
- * @description Retrieve the main user info (first name, last name, today score)
- * @param {number} id
+ * Component for horizontal Nav bar.
+ *
+ * @component
+ * @example
+ *
+ *
+ * return (
+ * &lt;HorizontalNav  />
+ * )
+ *
  */
-const getUserById = (id) =>
-  USER_MAIN_DATA.filter((user) => user.id === id).shift();
 
-/**
- * @param {number} id
- */
-const getUserActivityById = (id) =>
-  USER_ACTIVITY.filter((userActivity) => userActivity.userId === id).shift();
-
-/**
- * @param {number} id
- */
-const getUserAverageSession = (id) =>
-  USER_AVERAGE_SESSIONS.filter(
-    (userActivity) => userActivity.userId === id
-  ).shift();
-
-/**
- * @param {number} id
- */
-const getUserPerformance = (id) =>
-  USER_PERFORMANCE.filter(
-    (userPerformance) => userPerformance.userId === id
-  ).shift();
-
-module.exports = {
-  getUserById,
-  getUserActivityById,
-  getUserAverageSession,
-  getUserPerformance,
+const HorizontalNav = () => {
+  return (
+    &lt;NavWrapper>
+      &lt;NavLink to={"/"}>
+        &lt;AppLogo src={Logo}>&lt;/AppLogo>
+      &lt;/NavLink>
+      &lt;NavList className='nav-list'>
+        &lt;Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          &lt;NavLinks className='nav-links'>Accueil&lt;/NavLinks>
+        &lt;/Link>
+        &lt;Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          &lt;NavLinks className='nav-links'>Profil&lt;/NavLinks>
+        &lt;/Link>
+        &lt;Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          &lt;NavLinks className='nav-links'>Réglage&lt;/NavLinks>
+        &lt;/Link>
+        &lt;Link to='/' style={{ textDecoration: "none", color: "#fff" }}>
+          &lt;NavLinks className='nav-links'>Communaté&lt;/NavLinks>
+        &lt;/Link>
+      &lt;/NavList>
+    &lt;/NavWrapper>
+  );
 };
+
+export default HorizontalNav;
 </code></pre>
         </article>
     </section>

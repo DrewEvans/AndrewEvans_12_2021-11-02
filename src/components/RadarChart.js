@@ -19,20 +19,52 @@ const ChartWrapper = styled.div`
   border-radius: 5px;
 `;
 
-const data = [
-  { value: 200, kind: 1 },
-  { value: 240, kind: 2 },
-  { value: 80, kind: 3 },
-  { value: 80, kind: 4 },
-  { value: 220, kind: 5 },
-  { value: 110, kind: 6 },
-];
+/**
+ * Component for showing user details in the form of radar chart.
+ *
+ * @component
+ * @example
+ *
+ * displays user performance
+ *
+ * return (
+ * <ActivtiyRadarChart fetchUrl={url} />
+ * )
+ *
+ */
 
 const ActivtiyRadarChart = ({ fetchUrl }) => {
+  /**
+   * @typedef {Object} userPerformance
+   */
+
+  /**
+   * @callback userPerformance
+   * @param {userPerformance} state
+   * @returns {void}
+   */
+
+  /**
+   * @namespace {Object}
+   * @property {userPerformance} null
+   * @property {userPerformance} object
+   */
   const [userPerformance, setUserPerformance] = useState();
 
   useEffect(() => {
+    /**
+     * Download data from the specified URL.
+     *
+     * @async
+     * @function fetchUrl
+     * @param {string} url - The URL to fetch from.
+     * @return {Promise<string>} The data from the URL.
+     */
     async function fetchData() {
+      /** @constant
+       * @type {string}
+       * @default
+       */
       const request = await axios.get(fetchUrl);
       setUserPerformance(request.data.data.data);
       return request;
@@ -66,3 +98,10 @@ const ActivtiyRadarChart = ({ fetchUrl }) => {
 };
 
 export default ActivtiyRadarChart;
+
+ActivtiyRadarChart.propType = {
+  /**
+   * API Endpoint
+   */
+  fetchUrl: PropType.string,
+};
