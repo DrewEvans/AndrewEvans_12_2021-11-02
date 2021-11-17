@@ -9,6 +9,7 @@ import {
 import styled from "styled-components";
 import { formatKindValue, customizedLabel } from "../helpers/formatValues";
 import axios from "axios";
+import PropType from "prop-types";
 import { useEffect, useState } from "react";
 
 const ChartWrapper = styled.div`
