@@ -54,7 +54,7 @@ You will also see any lint errors in the console.
 
 ### Technology Stack
 
-![techStack]("https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/techstack-sportsee.svg")
+![techStack](https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/logo.png)
 
 This project was bootstrapped with [create react app](https://create-react-app.dev) & [Node v14](https://nodejs.org/en/) which uses the following technologies:
 ![NodeJs]("https://cdn.svgporn.com/logos/nodejs-icon.svg")
@@ -62,11 +62,13 @@ This project was bootstrapped with [create react app](https://create-react-app.d
 ![JavaScript]("https://cdn.svgporn.com/logos/javascript.svg")
 ![css]("https://cdn.svgporn.com/logos/css-3.svg")
 ![html]("https://cdn.svgporn.com/logos/html-5.svg")
-![react]("https://cdn.svgporn.com/logos/react.svg")
-![React-Router]("https://cdn.svgporn.com/logos/react-router.svg")
+![react](https://cdn.svgporn.com/logos/react.svg)
+![React Router](https://cdn.svgporn.com/logos/react-router.svg)
 ![Font-Awesome]("https://cdn.svgporn.com/logos/font-awesome.svg")
 
 - [Express.js](https://expressjs.com/)
+
+- [React Router](https://cdn.svgporn.com/logos/react-router.svg)
 - [Recharts](https://recharts.org/en-US)
 - [Styled Components](https://styled-components.com/)
 
