@@ -1,8 +1,20 @@
 ![sportSee](https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/logo.png)
 
-# Getting Started with Create React App
+#Project #12 - Develop an analytics dashboard with React
+This repo contains all the source code to run the fullstack app for the sports analytics dashboard SportSee.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+
+### 1. Prerequisites
+
+SportSee app uses the following tech stack:
+
+- Node.js v14
+
+### 2. Installation
+
+1. git clone https://github.com/DrewEvans/AndrewEvans_12_2021-11-02.git into working Directory
+2. npm install dependencies
 
 ## Available Scripts
 
