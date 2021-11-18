@@ -64,6 +64,8 @@ This project was bootstrapped with [create react app](https://create-react-app.d
 [React-Router]("https://cdn.svgporn.com/logos/react-router.svg")
 [Font-Awesome]("https://cdn.svgporn.com/logos/font-awesome.svg")
 
+[image]("https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/techstack-sportsee.svg")
+
 - [Express.js](https://expressjs.com/)
 - [Recharts](https://recharts.org/en-US)
 - [Styled Components](https://styled-components.com/)
