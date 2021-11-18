@@ -1,84 +1,71 @@
 ![sportSee](https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/logo.png)
 
-#Project #12 - Develop an analytics dashboard with React
+# Project-12
+
+Develop an analytics dashboard with React
 This repo contains all the source code to run the fullstack app for the sports analytics dashboard SportSee.
 
 ## Getting Started
 
 ### 1. Prerequisites
 
-SportSee app uses the following tech stack:
-
-- Node.js v14
+- [Node.js v14](Node.js v14)
 
 ### 2. Installation
 
 1. `git clone https://github.com/DrewEvans/AndrewEvans_12_2021-11-02.git` into working Directory
 2. `npm install`
 
-## Available Scripts
+### 3. Run the Development Server(s)
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
-Runs the app in the development mode.\
+Runs the client app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
+#### `npm server`
+
+Runs the micro API Endpoints in the development mode
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+##### Routes:
+
+- http://localhost:5000/user/:id
+- http://localhost:5000/user/:id/activity
+- http://localhost:5000/user/:id/average-sessions
+- http://localhost:5000/user/:id/performance
+
+#### `npm run dev`
+
+Runs both Client & API concurrently[^1] in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:5000](http://localhost:000) to view it in the browser.
+must have Concurretly pkg installed.
+
+The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `npm test`
+### Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- lightweight
+- Extensible
 
-### `npm run build`
+### Technology Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project was bootstrapped with [create react app](https://create-react-app.dev) & [Node v14](https://nodejs.org/en/) which uses the following technologies:
+[NodeJs]("https://cdn.svgporn.com/logos/nodejs-icon.svg")
+[Express]("https://cdn.svgporn.com/logos/express.svg")
+[JavaScript]("https://cdn.svgporn.com/logos/javascript.svg")
+[css]("https://cdn.svgporn.com/logos/css-3.svg")
+[html]("https://cdn.svgporn.com/logos/html-5.svg")
+[react]("https://cdn.svgporn.com/logos/react.svg")
+[React-Router]("https://cdn.svgporn.com/logos/react-router.svg")
+[Font-Awesome]("https://cdn.svgporn.com/logos/font-awesome.svg")
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Express.js](https://expressjs.com/)
+- [Recharts](https://recharts.org/en-US)
+- [Styled Components](https://styled-components.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[^1] Must have [Concurretly](https://www.npmjs.com/package/concurrently) pkg installed.
