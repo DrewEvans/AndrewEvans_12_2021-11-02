@@ -46,7 +46,7 @@ Runs both Client & API concurrently in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Open [http://localhost:5000](http://localhost:000) to view it in the browser.
 
-_Must have [Concurretly](https://www.npmjs.com/package/concurrently) pkg installed._
+_**Note:** Must have [Concurretly](https://www.npmjs.com/package/concurrently) pkg installed._
 
 **The page will reload if you make edits.**
 **You will also see any lint errors in the console.**
