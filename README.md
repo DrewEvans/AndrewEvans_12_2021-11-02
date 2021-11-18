@@ -13,8 +13,8 @@ SportSee app uses the following tech stack:
 
 ### 2. Installation
 
-1. git clone https://github.com/DrewEvans/AndrewEvans_12_2021-11-02.git into working Directory
-2. npm install dependencies
+1. `git clone https://github.com/DrewEvans/AndrewEvans_12_2021-11-02.git` into working Directory
+2. `npm install`
 
 ## Available Scripts
 
