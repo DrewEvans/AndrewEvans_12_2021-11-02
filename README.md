@@ -54,7 +54,7 @@ You will also see any lint errors in the console.
 
 ### Technology Stack
 
-![techStack](https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/techstack-sportsee.svg)
+![techStack](https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/techstack-sportsee-nbg.svg)
 
 #### This project was bootstrapped with [create react app](https://create-react-app.dev) & [Node v14](https://nodejs.org/en/) which uses the following technologies:
 
