@@ -16,7 +16,9 @@ This repo contains all the source code to run the fullstack app for the sports a
 1. `git clone https://github.com/DrewEvans/AndrewEvans_12_2021-11-02.git` into working Directory
 2. `npm install`
 
-### 3. Run the Development Server(s)
+### 3 Quickstart
+
+#### Run the Development Server(s)
 
 In the project directory, you can run:
 
@@ -42,10 +44,10 @@ Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 Runs both Client & API concurrently[^1] in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 Open [http://localhost:5000](http://localhost:000) to view it in the browser.
-must have Concurretly pkg installed.
+_Must have [Concurretly](https://www.npmjs.com/package/concurrently) pkg installed._
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+**The page will reload if you make edits.**
+**You will also see any lint errors in the console.**
 
 ### Features
 
@@ -63,4 +65,6 @@ You will also see any lint errors in the console.
 - [Recharts](https://recharts.org/en-US)
 - [Styled Components](https://styled-components.com/)
 
-[^1] Must have [Concurretly](https://www.npmjs.com/package/concurrently) pkg installed.
+### License
+
+All code is released under the [MIT](https://opensource.org/licenses/MIT) License
