@@ -53,8 +53,9 @@ You will also see any lint errors in the console.
 - Extensible
 
 ### Technology Stack
-
+![techStack]("https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/techstack-sportsee-nbg.svg")
 This project was bootstrapped with [create react app](https://create-react-app.dev) & [Node v14](https://nodejs.org/en/) which uses the following technologies:
+
 [NodeJs]("https://cdn.svgporn.com/logos/nodejs-icon.svg")
 [Express]("https://cdn.svgporn.com/logos/express.svg")
 [JavaScript]("https://cdn.svgporn.com/logos/javascript.svg")
@@ -63,7 +64,6 @@ This project was bootstrapped with [create react app](https://create-react-app.d
 [react]("https://cdn.svgporn.com/logos/react.svg")
 [React-Router]("https://cdn.svgporn.com/logos/react-router.svg")
 [Font-Awesome]("https://cdn.svgporn.com/logos/font-awesome.svg")
-![techStack](https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/logo.png)
 
 - [Express.js](https://expressjs.com/)
 - [Recharts](https://recharts.org/en-US)
