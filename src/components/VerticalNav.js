@@ -12,37 +12,37 @@ const strecthingIcon = <FontAwesomeIcon icon={faChild} />;
 const dumbellIcon = <FontAwesomeIcon icon={faDumbbell} />;
 
 const NavWrapper = styled.div`
-  background-color: black;
-  width: 60%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
+	background-color: black;
+	width: 60%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
 `;
 
 const IconWrapper = styled.div`
-  justify-self: center;
+	justify-self: center;
 `;
 
 const NavIcon = styled.div`
-  color: red;
-  background-color: #fff;
-  font-size: 1.25em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1.5em 0;
-  height: 64px;
-  width: 64px;
-  border-radius: 6px;
+	color: red;
+	background-color: #fff;
+	font-size: 1.25em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1.5em 0;
+	height: 64px;
+	width: 64px;
+	border-radius: 6px;
 `;
 
 const Copyright = styled.p`
-  color: #fff;
-  font-size: 1em;
-  width: 180px;
-  transform: rotate(-90deg);
+	color: #fff;
+	font-size: 1em;
+	width: 180px;
+	transform: rotate(-90deg);
 `;
 
 /**
@@ -59,24 +59,24 @@ const Copyright = styled.p`
  */
 
 const VerticalNav = () => {
-  return (
-    <NavWrapper>
-      <IconWrapper>
-        <Link to='/'>
-          <NavIcon>{strecthingIcon}</NavIcon>
-        </Link>
-        <Link to='/'>
-          <NavIcon>{swimmerIcon}</NavIcon>
-        </Link>
-        <Link to='/'>
-          <NavIcon>{bikingIcon}</NavIcon>
-        </Link>
-        <Link to='/'>
-          <NavIcon>{dumbellIcon}</NavIcon>
-        </Link>
-      </IconWrapper>
-      <Copyright>Copiryght, SportSee 2020</Copyright>
-    </NavWrapper>
-  );
+	return (
+		<NavWrapper>
+			<IconWrapper>
+				<Link to='/'>
+					<NavIcon>{strecthingIcon}</NavIcon>
+				</Link>
+				<Link to='/'>
+					<NavIcon>{swimmerIcon}</NavIcon>
+				</Link>
+				<Link to='/'>
+					<NavIcon>{bikingIcon}</NavIcon>
+				</Link>
+				<Link to='/'>
+					<NavIcon>{dumbellIcon}</NavIcon>
+				</Link>
+			</IconWrapper>
+			<Copyright>Copiryght, SportSee 2020</Copyright>
+		</NavWrapper>
+	);
 };
 export default VerticalNav;
