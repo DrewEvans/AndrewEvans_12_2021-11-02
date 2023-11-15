@@ -32,13 +32,13 @@ import PropType from "prop-types";
 import styled from "styled-components";
 
 const ChartWrapper = styled.div`
-  background: #fbfbfb;
-  display: flex;
-  justify-content: center;
-  width: 75%;
-  margin: 0 auto;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+	background: #fbfbfb;
+	display: flex;
+	justify-content: center;
+	width: 85%;
+	margin: 0 auto;
+	box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
 `;
 
 /**
@@ -54,97 +54,106 @@ const ChartWrapper = styled.div`
  * )
  */
 const ActivityBarChart = ({ fetchUrl }) => {
-  const { data } = useFetch(fetchUrl);
+	const { data } = useFetch(fetchUrl);
 
-  return (
-    &lt;>
-      {data &amp;&amp; (
-        &lt;ChartWrapper id='barChart'>
-          &lt;BarChart
-            width={1300}
-            height={270}
-            data={data.sessions}
-            barGap={20}
-            barCategoryGap='35%'
-            margin={{
-              top: 20,
-              right: 100,
-              left: 100,
-              bottom: 20,
-            }}>
-            &lt;XAxis dataKey='day' tickLine={false}>
-              &lt;Label value='Activité quotidienne' position='top' offset={200} />
-            &lt;/XAxis>
-            &lt;YAxis
-              yAxisId='left'
-              orientation='right'
-              stroke='#282D30'
-              type='number'
-              allowDecimals={false}
-              axisLine={false}
-              tickLine={false}
-              domain={[
-                "auto",
-                Math.max(...data.sessions.map((x) => x.kilogram)) + 2,
-              ]}
-              tickCount={3}
-            />
-            &lt;YAxis
-              yAxisId='right'
-              orientation='left'
-              stroke='none'
-              domain={[
-                "auto",
-                Math.max(...data.sessions.map((x) => x.calories)) + 2,
-              ]}
-              tickCount={5}
-            />
-            &lt;Bar
-              yAxisId='left'
-              dataKey='kilogram'
-              name='Poids (kg)'
-              fill='#282D30'
-              color='white'
-              legendType='circle'
-              radius={[10, 10, 0, 0]}
-            />
-            &lt;Bar
-              yAxisId='right'
-              dataKey='calories'
-              name='Calories brûlées (kCal)'
-              fill='#E60000'
-              legendType='circle'
-              radius={[10, 10, 0, 0]}
-            />
-            &lt;Tooltip
-              cursor={{ opacity: 0.3, strokeWidth: 2 }}
-              contentStyle={{
-                backgroundColor: "red",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-              }}
-              itemStyle={{ color: "white" }}
-            />
-            &lt;Legend
-              wrapperStyle={{ top: "0%" }}
-              verticalAlign='top'
-              align='right'
-            />
-          &lt;/BarChart>
-        &lt;/ChartWrapper>
-      )}
-    &lt;/>
-  );
+	return (
+		&lt;>
+			{data &amp;&amp; (
+				&lt;ChartWrapper id='barChart'>
+					&lt;BarChart
+						width={1300}
+						height={270}
+						data={data.sessions}
+						barGap={20}
+						barCategoryGap='35%'
+						margin={{
+							top: 20,
+							right: 100,
+							left: 100,
+							bottom: 20,
+						}}
+					>
+						&lt;XAxis dataKey='day' tickLine={false}>
+							&lt;Label
+								value='Activité quotidienne'
+								position='top'
+								offset={200}
+							/>
+						&lt;/XAxis>
+						&lt;YAxis
+							yAxisId='left'
+							orientation='right'
+							stroke='#282D30'
+							type='number'
+							allowDecimals={false}
+							axisLine={false}
+							tickLine={false}
+							domain={[
+								"auto",
+								Math.max(
+									...data.sessions.map((x) => x.kilogram)
+								) + 2,
+							]}
+							tickCount={3}
+						/>
+						&lt;YAxis
+							yAxisId='right'
+							orientation='left'
+							stroke='none'
+							domain={[
+								"auto",
+								Math.max(
+									...data.sessions.map((x) => x.calories)
+								) + 2,
+							]}
+							tickCount={5}
+						/>
+						&lt;Bar
+							yAxisId='left'
+							dataKey='kilogram'
+							name='Poids (kg)'
+							fill='#282D30'
+							color='white'
+							legendType='circle'
+							radius={[10, 10, 0, 0]}
+						/>
+						&lt;Bar
+							yAxisId='right'
+							dataKey='calories'
+							name='Calories brûlées (kCal)'
+							fill='#E60000'
+							legendType='circle'
+							radius={[10, 10, 0, 0]}
+						/>
+						&lt;Tooltip
+							cursor={{ opacity: 0.3, strokeWidth: 2 }}
+							contentStyle={{
+								backgroundColor: "red",
+								color: "white",
+								border: "none",
+								borderRadius: "6px",
+							}}
+							itemStyle={{ color: "white" }}
+						/>
+						&lt;Legend
+							wrapperStyle={{ top: "0%" }}
+							verticalAlign='top'
+							align='right'
+						/>
+					&lt;/BarChart>
+				&lt;/ChartWrapper>
+			)}
+		&lt;/>
+	);
 };
 
 export default ActivityBarChart;
 
 ActivityBarChart.propType = {
-  /**
-   * API Endpoint
-   */
-  fetchUrl: PropType.string,
+	/**
+	 * API Endpoint
+	 */
+	fetchUrl: PropType.string,
 };
 </code></pre>
         </article>
@@ -156,13 +165,13 @@ ActivityBarChart.propType = {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Nov 17 2021 16:28:35 GMT+0100 (Central European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Nov 15 2023 22:18:39 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

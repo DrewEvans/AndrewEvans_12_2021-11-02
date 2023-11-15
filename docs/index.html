@@ -43,45 +43,59 @@
 
 
     <section>
-        <article><p><img src="%22./src/assets/logo.png%22" alt="SportSee"></p>
-<h1>Getting Started with Create React App</h1>
-<p>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app">Create React App</a>.</p>
-<h2>Available Scripts</h2>
+        <article><p><img src="https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/logo.png" alt="sportSee"></p>
+<h1>Project-12</h1>
+<p>Develop an analytics dashboard with React
+This repo contains all the source code to run the fullstack app for the sports analytics dashboard SportSee.</p>
+<h2>Getting Started</h2>
+<h3>1. Prerequisites</h3>
+<ul>
+<li>[Node.js v14](Node.js v14)</li>
+</ul>
+<h3>2. Installation</h3>
+<ol>
+<li><code>git clone https://github.com/DrewEvans/AndrewEvans_12_2021-11-02.git</code> into working Directory</li>
+<li><code>npm install</code></li>
+</ol>
+<h3>3 Quickstart</h3>
+<h4>Run the Development Server(s)</h4>
 <p>In the project directory, you can run:</p>
-<h3><code>npm start</code></h3>
-<p>Runs the app in the development mode.<br>
+<h4><code>npm start</code></h4>
+<p>Runs the client app in the development mode.
 Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
-<p>The page will reload if you make edits.<br>
-You will also see any lint errors in the console.</p>
-<h3><code>npm test</code></h3>
-<p>Launches the test runner in the interactive watch mode.<br>
-See the section about <a href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
-<h3><code>npm run build</code></h3>
-<p>Builds the app for production to the <code>build</code> folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-<p>The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!</p>
-<p>See the section about <a href="https://facebook.github.io/create-react-app/docs/deployment">deployment</a> for more information.</p>
-<h3><code>npm run eject</code></h3>
-<p><strong>Note: this is a one-way operation. Once you <code>eject</code>, you can’t go back!</strong></p>
-<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will remove the single build dependency from your project.</p>
-<p>Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except <code>eject</code> will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.</p>
-<p>You don’t have to ever use <code>eject</code>. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.</p>
-<h2>Learn More</h2>
-<p>You can learn more in the <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App documentation</a>.</p>
-<p>To learn React, check out the <a href="https://reactjs.org/">React documentation</a>.</p>
-<h3>Code Splitting</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/code-splitting">https://facebook.github.io/create-react-app/docs/code-splitting</a></p>
-<h3>Analyzing the Bundle Size</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size">https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size</a></p>
-<h3>Making a Progressive Web App</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app">https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app</a></p>
-<h3>Advanced Configuration</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/advanced-configuration">https://facebook.github.io/create-react-app/docs/advanced-configuration</a></p>
-<h3>Deployment</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/deployment">https://facebook.github.io/create-react-app/docs/deployment</a></p>
-<h3><code>npm run build</code> fails to minify</h3>
-<p>This section has moved here: <a href="https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify">https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify</a></p></article>
+<h4><code>npm server</code></h4>
+<p>Runs the micro API Endpoints in the development mode
+Open <a href="http://localhost:5000">http://localhost:5000</a> to view it in the browser.</p>
+<h5>Routes:</h5>
+<ul>
+<li>http://localhost:5000/user/:id</li>
+<li>http://localhost:5000/user/:id/activity</li>
+<li>http://localhost:5000/user/:id/average-sessions</li>
+<li>http://localhost:5000/user/:id/performance</li>
+</ul>
+<h4><code>npm run dev</code></h4>
+<p>Runs both Client &amp; API concurrently in the development mode.</p>
+<p>Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.
+Open <a href="http://localhost:000">http://localhost:5000</a> to view it in the browser.</p>
+<p><em><strong>Note:</strong> Must have <a href="https://www.npmjs.com/package/concurrently">Concurretly</a> pkg installed.</em></p>
+<p><strong>The page will reload if you make edits.</strong>
+<strong>You will also see any lint errors in the console.</strong></p>
+<h3>Features</h3>
+<ul>
+<li>lightweight</li>
+<li>Extensible</li>
+</ul>
+<h3>Technology Stack</h3>
+<p><img src="https://github.com/DrewEvans/AndrewEvans_12_2021-11-02/blob/master/src/assets/techstack-sportsee-nbg.svg" alt="techStack"></p>
+<h4>This project was bootstrapped with <a href="https://create-react-app.dev">create react app</a> &amp; <a href="https://nodejs.org/en/">Node v14</a> which uses the following technologies:</h4>
+<ul>
+<li><a href="https://expressjs.com/">Express.js</a></li>
+<li><a href="https://cdn.svgporn.com/logos/react-router.svg">React Router</a></li>
+<li><a href="https://recharts.org/en-US">Recharts</a></li>
+<li><a href="https://styled-components.com/">Styled Components</a></li>
+</ul>
+<h3>License</h3>
+<p>All code is released under the <a href="https://opensource.org/licenses/MIT">MIT</a> License</p></article>
     </section>
 
 
@@ -92,13 +106,13 @@ Your app is ready to be deployed!</p>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Nov 17 2021 16:28:35 GMT+0100 (Central European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Nov 15 2023 22:18:39 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

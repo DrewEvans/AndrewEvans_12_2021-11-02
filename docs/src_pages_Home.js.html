@@ -27,14 +27,14 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import {
-  HorizontalNav,
-  VerticalNav,
-  WelcomeHeader,
-  DailyActivityIcon,
-  ActivityBarChart,
-  LineChartDuration,
-  ActivtiyRadarChart,
-  ObjectiveRadialChart,
+	HorizontalNav,
+	VerticalNav,
+	WelcomeHeader,
+	DailyActivityIcon,
+	ActivityBarChart,
+	LineChartDuration,
+	ActivtiyRadarChart,
+	ObjectiveRadialChart,
 } from "../components/index";
 import { useParams } from "react-router";
 import useFetch from "../hooks/useFetch";
@@ -51,42 +51,43 @@ const appleIcon = &lt;FontAwesomeIcon icon={faAppleAlt} />;
 const hamburgerIcon = &lt;FontAwesomeIcon icon={faHamburger} />;
 
 const Container = styled.div`
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 0.2fr 2.1fr 0.7fr;
-  grid-template-rows: 0.3fr 0.6fr 2.1fr;
-  grid-template-areas:
-    "nav nav nav"
-    "aside main main"
-    "aside content section";
+	display: grid;
+	height: 100vh;
+	width: 100%;
+	grid-template-columns: 0.2fr 2.1fr 0.7fr;
+	grid-template-rows: 0.3fr 0.6fr 2.1fr;
+	grid-template-areas:
+		"nav nav nav"
+		"aside main main"
+		"aside content section";
 `;
 
 const Main = styled.main`
-  grid-area: main;
+	grid-area: main;
 `;
 
 const MulitGridWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  width: 1150px;
+	display: flex;
+	justify-content: space-around;
+	margin: 0 auto;
+	width: 1150px;
 `;
 
 const Aside = styled.aside`
-  grid-area: aside;
+	grid-area: aside;
 `;
 
 const NavBar = styled.nav`
-  grid-area: nav;
+	grid-area: nav;
 `;
 
 const Content = styled.div`
-  grid-area: content;
-  margin-bottom: 3rem;
-  display: flex;
-  flex-direction: Column;
-  justify-content: space-between;
-  flex-wrap: Wrap;
+	grid-area: content;
+	margin-bottom: 3rem;
+	display: flex;
+	flex-direction: Column;
+	justify-content: space-between;
+	flex-wrap: Wrap;
 `;
 
 const Section = styled.section`
@@ -110,76 +111,82 @@ const Section = styled.section`
  */
 
 const Home = () => {
-  const { id } = useParams();
+	const { id } = useParams();
 
-  const requests = {
-    fetchPerformance: `/user/${id}/performance`,
-    fetchSessions: `/user/${id}/average-sessions`,
-    fetchUser: `/user/${id}`,
-    fetchActivity: `/user/${id}/activity`,
-  };
+	const requests = {
+		fetchPerformance: `https://devporium-rest.onrender.com/sportsee/user/${id}/performance`,
+		fetchSessions: `https://devporium-rest.onrender.com/sportsee/user/${id}/average-sessions`,
+		fetchUser: `https://devporium-rest.onrender.com/sportsee/user/${id}`,
+		fetchActivity: `https://devporium-rest.onrender.com/sportsee/user/${id}/activity`,
+	};
 
-  const { data } = useFetch(requests.fetchUser);
+	const { data } = useFetch(requests.fetchUser);
 
-  return (
-    &lt;>
-      &lt;Container>
-        &lt;NavBar>
-          &lt;HorizontalNav />
-        &lt;/NavBar>
-        &lt;Aside>
-          &lt;VerticalNav />
-        &lt;/Aside>
-        &lt;Main>{data &amp;&amp; &lt;WelcomeHeader name={data.userInfos.firstName} />}&lt;/Main>
+	return (
+		&lt;>
+			&lt;Container>
+				&lt;NavBar>
+					&lt;HorizontalNav />
+				&lt;/NavBar>
+				&lt;Aside>
+					&lt;VerticalNav />
+				&lt;/Aside>
+				&lt;Main>
+					{data &amp;&amp; &lt;WelcomeHeader name={data.userInfos.firstName} />}
+				&lt;/Main>
 
-        &lt;Content>
-          &lt;ActivityBarChart fetchUrl={requests.fetchActivity} />
-          &lt;MulitGridWrapper>
-            &lt;LineChartDuration fetchUrl={requests.fetchSessions} />
-            &lt;ActivtiyRadarChart fetchUrl={requests.fetchPerformance} />
-            {data &amp;&amp; (
-              &lt;ObjectiveRadialChart score={Math.floor(data.todayScore * 100)} />
-            )}
-          &lt;/MulitGridWrapper>
-        &lt;/Content>
+				&lt;Content>
+					&lt;ActivityBarChart fetchUrl={requests.fetchActivity} />
+					&lt;MulitGridWrapper>
+						&lt;LineChartDuration fetchUrl={requests.fetchSessions} />
+						&lt;ActivtiyRadarChart
+							fetchUrl={requests.fetchPerformance}
+						/>
+						{data &amp;&amp; (
+							&lt;ObjectiveRadialChart
+								score={Math.floor(data.todayScore * 100)}
+							/>
+						)}
+					&lt;/MulitGridWrapper>
+				&lt;/Content>
 
-        &lt;Section>
-          {data &amp;&amp; (
-            &lt;DailyActivityIcon
-              icon={fireIcon}
-              metricAbv='kCal'
-              type='Calories'
-              amount={data.keyData.calorieCount}
-            />
-          )}
-          {data &amp;&amp; (
-            &lt;DailyActivityIcon
-              icon={meatIcon}
-              metricAbv='g'
-              type='Proteines'
-              amount={data.keyData.proteinCount}
-            />
-          )}
-          {data &amp;&amp; (
-            &lt;DailyActivityIcon
-              icon={appleIcon}
-              metricAbv='g'
-              type='Carbohydrate'
-              amount={data.keyData.carbohydrateCount}
-            />
-          )}
-          {data &amp;&amp; (
-            &lt;DailyActivityIcon
-              icon={hamburgerIcon}
-              metricAbv='g'
-              type='Lipides'
-              amount={data.keyData.lipidCount}
-            />
-          )}
-        &lt;/Section>
-      &lt;/Container>
-    &lt;/>
-  );
+				&lt;Section>
+					{data &amp;&amp; (
+						&lt;DailyActivityIcon
+							icon={fireIcon}
+							metricAbv='kCal'
+							type='Calories'
+							amount={data.keyData.calorieCount}
+						/>
+					)}
+					{data &amp;&amp; (
+						&lt;DailyActivityIcon
+							icon={meatIcon}
+							metricAbv='g'
+							type='Proteines'
+							amount={data.keyData.proteinCount}
+						/>
+					)}
+					{data &amp;&amp; (
+						&lt;DailyActivityIcon
+							icon={appleIcon}
+							metricAbv='g'
+							type='Carbohydrate'
+							amount={data.keyData.carbohydrateCount}
+						/>
+					)}
+					{data &amp;&amp; (
+						&lt;DailyActivityIcon
+							icon={hamburgerIcon}
+							metricAbv='g'
+							type='Lipides'
+							amount={data.keyData.lipidCount}
+						/>
+					)}
+				&lt;/Section>
+			&lt;/Container>
+		&lt;/>
+	);
 };
 export default Home;
 </code></pre>
@@ -192,13 +199,13 @@ export default Home;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li>{Object}</li></ul><h3>Classes</h3><ul><li><a href="ActivityBarChart.html">ActivityBarChart</a></li><li><a href="ActivtiyRadarChart.html">ActivtiyRadarChart</a></li><li><a href="DailyActivityIcon.html">DailyActivityIcon</a></li><li><a href="Home.html">Home</a></li><li><a href="HorizontalNav.html">HorizontalNav</a></li><li><a href="LineChartDuration.html">LineChartDuration</a></li><li><a href="ObjectiveRadialChart.html">ObjectiveRadialChart</a></li><li><a href="VerticalNav.html">VerticalNav</a></li><li><a href="WelcomeHeader.html">WelcomeHeader</a></li></ul><h3>Global</h3><ul><li><a href="global.html#GetDayNameByOrder">GetDayNameByOrder</a></li><li><a href="global.html#GetShortDayNameByOrder">GetShortDayNameByOrder</a></li><li><a href="global.html#customizedLabel">customizedLabel</a></li><li><a href="global.html#fetchUrl">fetchUrl</a></li><li><a href="global.html#formatKindValue">formatKindValue</a></li><li><a href="global.html#formatTimeValue">formatTimeValue</a></li><li><a href="global.html#getUserActivityById">getUserActivityById</a></li><li><a href="global.html#getUserAverageSession">getUserAverageSession</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserPerformance">getUserPerformance</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Nov 17 2021 16:28:35 GMT+0100 (Central European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Nov 15 2023 22:18:39 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
