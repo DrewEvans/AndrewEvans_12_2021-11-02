@@ -86,10 +86,10 @@ const Home = () => {
 	const { id } = useParams();
 
 	const requests = {
-		fetchPerformance: `/user/${id}/performance`,
-		fetchSessions: `/user/${id}/average-sessions`,
-		fetchUser: `/user/${id}`,
-		fetchActivity: `/user/${id}/activity`,
+		fetchPerformance: `https://devporium-rest.onrender.com/sportsee/user/${id}/performance`,
+		fetchSessions: `https://devporium-rest.onrender.com/sportsee/user/${id}/average-sessions`,
+		fetchUser: `https://devporium-rest.onrender.com/sportsee/user/${id}`,
+		fetchActivity: `https://devporium-rest.onrender.com/sportsee/user/${id}/activity`,
 	};
 
 	const { data } = useFetch(requests.fetchUser);
